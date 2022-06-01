@@ -628,7 +628,7 @@ figure.effect-honey:hover h2 i {
   padding: 0;
   display: flex;
   position:absolute;
-  top: 370%;
+  top: 350%;
   left: 48%;
   transform: translate(-50%, -50%);
 }
