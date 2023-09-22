@@ -14,22 +14,24 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
-button{
-  max-width: 200px; 
-  width: 100%;
-  padding: 15px 20px;
-  background-color:#1f3f6c;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  letter-spacing: 4px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.5s;
-  font-size: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+button {
+    padding: 15px 20px;
+    background-color: #1f3f6c;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 30px;
+    margin: 10px; /* Dodajte marginu da biste stvorili razmak između dugmadi */
+    width: 100%; /* Postavite širinu na 100% kako bi se dugmad razvukla na širinu ekrana */
+}
+
+button a {
+    text-decoration: none;
 }
 
 button a{
