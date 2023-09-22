@@ -23,10 +23,11 @@ cursor: pointer;
 text-align: center;
 text-decoration: none;
 border-radius: 5px;
+background: transparent;
+color: white;
 }
 
 .button:hover {
-color: white;
-background-color: black;
+color: #d9d9d9d9;
 transition: 0.3s;
 }
