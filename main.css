@@ -1,57 +1,32 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-}
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#1f3f6c;
-    height: 100vh;
-    font-family: 'Raleway', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background: #44A08D;  
+background: #000428; 
+background: -webkit-linear-gradient(to right, #004e92, #000428);  
+background: linear-gradient(to right, #004e92, #000428); 
 }
 
-button {
-    padding: 15px 20px;
-    background-color: #1f3f6c;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    letter-spacing: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.5s;
-    font-size: 30px;
-    margin: 10px;
-    width: 100%; 
+.button-container {
+text-align: center;
 }
 
-
-@media (max-width: 768px) {
-    button {
-        font-size: 20px; 
-    }
+.button {
+display: inline-block;
+padding: 10px 20px;
+font-size: 3em;
+border: none;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+border-radius: 5px;
 }
 
-
-button a {
-    text-decoration: none;
-}
-
-button a{
-    text-decoration: none;
-}
-
-button:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 200px #03e9f4;
-     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+.button:hover {
+color: white;
+background-color: black;
+transition: 0.3s;
 }
