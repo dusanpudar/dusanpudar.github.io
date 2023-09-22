@@ -26,9 +26,17 @@ button {
     cursor: pointer;
     transition: 0.5s;
     font-size: 30px;
-    margin: 10px; /* Dodajte marginu da biste stvorili razmak između dugmadi */
-    width: 100%; /* Postavite širinu na 100% kako bi se dugmad razvukla na širinu ekrana */
+    margin: 10px;
+    width: 100%; 
 }
+
+
+@media (max-width: 768px) {
+    button {
+        font-size: 20px; 
+    }
+}
+
 
 button a {
     text-decoration: none;
