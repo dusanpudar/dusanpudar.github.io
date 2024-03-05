@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
 body{
 display: flex;
 justify-content: center;
@@ -8,6 +9,9 @@ background: #44A08D;
 background: #000428; 
 background: -webkit-linear-gradient(to right, #004e92, #000428);  
 background: linear-gradient(to right, #004e92, #000428); 
+font-family: "Anta", sans-serif;
+font-weight: 400;
+font-style: normal;
 }
 
 .button-container {
@@ -31,3 +35,25 @@ color: white;
 color: #d9d9d9d9;
 transition: 0.3s;
 }
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+}
+.mail{
+    color: rgb(43, 197, 23);
+}
+.anta-regular {
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
