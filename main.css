@@ -13,11 +13,9 @@ font-family: "Anta", sans-serif;
 font-weight: 400;
 font-style: normal;
 }
-
 .button-container {
 text-align: center;
 }
-
 .button {
 display: inline-block;
 padding: 10px 20px;
@@ -30,30 +28,27 @@ border-radius: 5px;
 background: transparent;
 color: white;
 }
-
 .button:hover {
 color: #d9d9d9d9;
 transition: 0.3s;
 }
-
 footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
+position: fixed;
+bottom: 0;
+width: 100%;
+text-align: center;
+color: white;
 }
-
 footer a{
-    color: white;
-    text-decoration: none;
+color: white;
+text-decoration: none;
 }
 .mail{
-    color: rgb(43, 197, 23);
+color: rgb(43, 197, 23);
 }
 .anta-regular {
-    font-family: "Anta", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+font-family: "Anta", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
   
