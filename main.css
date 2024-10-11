@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Ovo drži footer na dnu */
-    background: linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428); /* Zadržavamo gradijent na telu */
 }
 
 .profile-container {
@@ -62,13 +62,13 @@ p {
 
 footer {
     text-align: center;
-    color: white;
+    color: black; /* Tamnija boja za tekst */
     padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.8); /* Dodatni efekat */
+    background-color: transparent; /* Footer bez pozadine */
 }
 
 footer a {
-    color: white;
+    color: black; /* Tekstualni linkovi u footeru */
     text-decoration: none;
 }
 
