@@ -64,7 +64,6 @@ footer {
     text-align: center;
     color: black; /* Tamnija boja za tekst */
     padding: 10px 0;
-    background-color: transparent; /* Footer bez pozadine */
 }
 
 footer a {
