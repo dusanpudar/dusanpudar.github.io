@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Anta", sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    justify-content: space-between; /* Ovo drži footer na dnu */
     background: linear-gradient(to right, #004e92, #000428);
-    font-family: "Anta", sans-serif;
 }
 
 .profile-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 .profile-pic {
@@ -58,11 +61,10 @@ p {
 }
 
 footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
     text-align: center;
     color: white;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Dodatni efekat */
 }
 
 footer a {
