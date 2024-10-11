@@ -1,54 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
-body{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-margin: 0;
-background: #44A08D;  
-background: #000428; 
-background: -webkit-linear-gradient(to right, #004e92, #000428);  
-background: linear-gradient(to right, #004e92, #000428); 
-font-family: "Anta", sans-serif;
-font-weight: 400;
-font-style: normal;
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #004e92, #000428);
+    font-family: "Anta", sans-serif;
 }
+
+.profile-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+h1 {
+    color: white;
+    margin: 10px 0;
+}
+
+p {
+    color: #d9d9d9;
+    font-size: 1.2em;
+}
+
 .button-container {
-text-align: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 .button {
-display: inline-block;
-padding: 10px 20px;
-font-size: 3em;
-border: none;
-cursor: pointer;
-text-align: center;
-text-decoration: none;
-border-radius: 5px;
-background: transparent;
-color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 3em;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
 }
+
 .button:hover {
-color: #d9d9d9d9;
-transition: 0.3s;
+    color: #d9d9d9;
+    transition: 0.3s;
 }
-footer{
-position: fixed;
-bottom: 0;
-width: 100%;
-text-align: center;
-color: white;
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
 }
-footer a{
-color: white;
-text-decoration: none;
+
+footer a {
+    color: white;
+    text-decoration: none;
 }
-.mail{
-color: rgb(43, 197, 23);
+
+.mail {
+    color: rgb(43, 197, 23);
 }
-.anta-regular {
-font-family: "Anta", sans-serif;
-font-weight: 400;
-font-style: normal;
-}
-  
