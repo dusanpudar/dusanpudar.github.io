@@ -1,76 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
-
-html, body {
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: "Anta", sans-serif;
+    box-sizing: border-box;
+    font-family: 'Source Code Pro', monospace;
 }
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Ovo drži footer na dnu */
-    background: linear-gradient(to right, #004e92, #000428); /* Zadržavamo gradijent na telu */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111D29;
+    color: #fff;
 }
 
-.profile-container {
-    text-align: center;
-    margin-top: 50px;
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111D29;
+    z-index: 1000;
 }
 
-.profile-pic {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #B0D236;
     border-radius: 50%;
-    border: 5px solid white;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
 }
 
-h1 {
-    color: white;
-    margin: 10px 0;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-p {
-    color: #d9d9d9;
-    font-size: 1.2em;
-}
-
-.button-container {
+.container {
     text-align: center;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    color: #333;
+}
+
+.profile {
     margin-bottom: 20px;
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 3em;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    background: transparent;
-    color: white;
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; 
+    border: 5px solid #B0D236;
 }
 
-.button:hover {
-    color: #d9d9d9;
-    transition: 0.3s;
+h1, p {
+    margin: 10px 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #B0D236;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #111D29;
+    transform: scale(1.2);
 }
 
 footer {
-    text-align: center;
-    color: black; /* Tamnija boja za tekst */
-    padding: 10px 0;
-}
-
-footer a {
-    color: black; /* Tekstualni linkovi u footeru */
-    text-decoration: none;
-}
-
-.mail {
-    color: rgb(43, 197, 23);
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
 }
