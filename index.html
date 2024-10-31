@@ -4,56 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skeniraj QR kod</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
 </head>
 <body>
-    <h1>Skeniraj QR kooood</h1>
-    <video id="video" width="300" height="200" autoplay></video>
-    <button id="scanBtn">Skeniraj QR kod</button>
+    <h1>Skeniraj QR kod sa fiskalnog računa</h1>
+    <div id="reader" style="width: 600px;"></div>
+    <form id="dataForm">
+        <label for="pfrNumber">PFR broj:</label>
+        <input type="text" id="pfrNumber" required><br>
+
+        <label for="time">Vreme:</label>
+        <input type="text" id="time" required><br>
+
+        <label for="amount">Iznos:</label>
+        <input type="text" id="amount" required><br>
+
+        <button type="submit">Pošalji</button>
+    </form>
     <p id="message"></p>
 
     <script>
-        const video = document.getElementById('video');
-        const message = document.getElementById('message');
+        function onScanSuccess(decodedText, decodedResult) {
+            // Očekujemo da QR kod sadrži PFR broj, vreme i iznos, razdvojene zarezima
+            const dataArray = decodedText.split(',');
 
-        // Učitaj kameru
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                video.srcObject = stream;
-            })
-            .catch(error => {
-                message.textContent = 'Greška prilikom pristupa kameri: ' + error.message;
-            });
+            if (dataArray.length === 3) {
+                // Popuni formu sa skeniranim podacima
+                document.getElementById('pfrNumber').value = dataArray[0];
+                document.getElementById('time').value = dataArray[1];
+                document.getElementById('amount').value = dataArray[2];
 
-        document.getElementById('scanBtn').addEventListener('click', () => {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.height = video.videoHeight;
-            canvas.width = video.videoWidth;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-            const code = jsQR(imageData.data, canvas.width, canvas.height);
-
-            if (code) {
-                const data = code.data; // Ovaj podatak sadrži QR kod
-                message.textContent = 'Skenirani podaci: ' + data;
-                addToGoogleSheets(data); // Poziv funkcije za slanje podataka
+                // Stopiraj skeniranje
+                html5QrcodeScanner.clear();
             } else {
-                message.textContent = 'QR kod nije prepoznat. Pokušajte ponovo.';
+                document.getElementById('message').textContent = 'Neispravan QR kod. Proverite format.';
             }
+        }
+
+        function onScanFailure(error) {
+            // Ova funkcija se može koristiti za logovanje grešaka
+            console.warn(`Greška prilikom skeniranja: ${error}`);
+        }
+
+        const html5QrcodeScanner = new Html5Qrcode("reader");
+        html5QrcodeScanner.start(
+            { facingMode: "environment" }, 
+            { fps: 10, qrbox: 250 },
+            onScanSuccess,
+            onScanFailure)
+        .catch(err => {
+            console.error(`Greška prilikom pokretanja skeniranja: ${err}`);
         });
 
-        function addToGoogleSheets(data) {
-            const scriptUrl = 'https://script.google.com/macros/s/1u46L2uCugmeBuQWJ-s4jtuWs4dCXIjU_Tf4vhkW6AIiO8xJN7IQZBIYj/exec'; // Tvoj Script ID
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const pfrNumber = document.getElementById('pfrNumber').value;
+            const time = document.getElementById('time').value;
+            const amount = document.getElementById('amount').value;
+
+            const data = `${pfrNumber},${time},${amount}`;
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyHwAurQYk5fllqNy6nCLyCq17nq29BOwJWGERW9tftjC2IZMjZdCJUS0KUWoT3Lg6q/exec';
+
             fetch(scriptUrl + '?data=' + encodeURIComponent(data))
                 .then(response => response.text())
                 .then(result => {
-                    message.textContent = 'Podaci su uspešno dodani!';
+                    document.getElementById('message').textContent = result; // Prikazivanje rezultata
                 })
                 .catch(error => {
-                    message.textContent = 'Greška prilikom dodavanja podataka.';
+                    document.getElementById('message').textContent = 'Greška prilikom dodavanja podataka: ' + error.message;
                 });
-        }
+        });
     </script>
 </body>
 </html>
