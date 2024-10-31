@@ -37,7 +37,7 @@
             font-weight: bold;
         }
 
-        input[type="text"] {
+        input[type="text"], textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -69,14 +69,17 @@
 <body>
     <h1>Unesi podatke o računu</h1>
     <form id="dataForm">
-        <label for="pfrNumber">PFR broj:</label>
+        <label for="pfrNumber">PFR broj računa:</label>
         <input type="text" id="pfrNumber" required>
 
-        <label for="time">Vreme:</label>
+        <label for="time">Vreme računa:</label>
         <input type="text" id="time" required>
 
-        <label for="amount">Iznos:</label>
+        <label for="amount">Iznos računa:</label>
         <input type="text" id="amount" required>
+
+        <label for="description">Opis računa:</label>
+        <textarea id="description" rows="4" required></textarea>
 
         <button type="submit">Pošalji</button>
     </form>
@@ -89,8 +92,9 @@
             const pfrNumber = document.getElementById('pfrNumber').value;
             const time = document.getElementById('time').value;
             const amount = document.getElementById('amount').value;
+            const description = document.getElementById('description').value; // Dodato polje za opis
 
-            const data = `${pfrNumber},${time},${amount}`;
+            const data = `${pfrNumber},${time},${amount},${description}`; // Dodaj opis u string
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbyHwAurQYk5fllqNy6nCLyCq17nq29BOwJWGERW9tftjC2IZMjZdCJUS0KUWoT3Lg6q/exec';
 
             fetch(scriptUrl + '?data=' + encodeURIComponent(data))
