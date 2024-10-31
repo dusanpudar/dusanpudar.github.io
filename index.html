@@ -1,86 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
-    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
-    <style>
-        #reader {
-            width: 600px; 
-            height: 400px; 
-            margin: auto; 
-            border: 2px solid black; 
-        }
-    </style>
+    <title>QR Reader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
 </head>
 <body>
-    <h1 style="text-align: center;">QR Code Scannerrrrr</h1>
-    <div id="reader"></div>
-    <div id="result" style="text-align: center;"></div>
+    <h1>Učitaj QR kod</h1>
+    <video id="video" width="300" height="200" autoplay></video>
+    <button id="scanBtn">Skeniraj QR kod</button>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const html5QrCode = new Html5Qrcode("reader");
+        const video = document.getElementById('video');
 
-            // Pokretanje skenera
-            html5QrCode.start(
-                { facingMode: "environment" }, // Koristi kameru okrenutu ka spolja
-                {
-                    fps: 10, // Frames per second
-                    qrbox: 250 // Veličina QR box-a
-                },
-                (decodedText, decodedResult) => {
-                    console.log(`Decoded text: ${decodedText}`);
-                    document.getElementById("result").innerText = `Skenirani podaci: ${decodedText}`;
-                    // Poziv funkcije za unos podataka u Google Sheet
-                    addToGoogleSheet(decodedText);
-                    html5QrCode.stop();
-                },
-                (errorMessage) => {
-                    // Prikazivanje greške (ako je potrebno)
-                    console.warn(`QR code scan error: ${errorMessage}`);
-                }
-            ).catch(err => {
-                console.error(`Failed to start scanning: ${err}`);
-                alert("Greška pri pokretanju skenera. Proveri da li je kamera dostupna.");
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(stream => {
+                video.srcObject = stream;
             });
 
-            // Funkcija za unos podataka u Google Sheet
-            function addToGoogleSheet(data) {
-                const sheetId = '1ZCf7JHeAG21TM9BWY9wLVAZ0GnvaHhI7hLzxhERHMZ0'; // tvoj Google Sheet ID
-                const apiKey = '320647357285-2slvkr2jadah6hch048isjjoejhg3u8p.apps.googleusercontent.com'; // tvoj API ključ
-                const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:append?valueInputOption=USER_ENTERED&key=${apiKey}`;
-                
-                const params = {
-                    range: 'Sheet1!A1',
-                    majorDimension: 'ROWS',
-                    values: [[data, new Date().toISOString()]] // dodavanje podataka i trenutnog vremena
-                };
+        document.getElementById('scanBtn').addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.height = video.videoHeight;
+            canvas.width = video.videoWidth;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(params)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                    alert('Podaci su uspešno sačuvani!');
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('Došlo je do greške prilikom čuvanja podataka.');
-                });
+            if (code) {
+                const data = code.data;
+                console.log('QR Code data:', data);
+                // Ovde pozovi Google Apps Script
+                addToGoogleSheets(data);
+            } else {
+                alert('QR kod nije prepoznat');
             }
         });
+
+        function addToGoogleSheets(data) {
+            const scriptUrl = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+            fetch(scriptUrl + '?data=' + encodeURIComponent(data))
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result);
+                    alert('Podaci su uspešno dodati!');
+                })
+                .catch(error => {
+                    console.error('Greška:', error);
+                    alert('Došlo je do greške pri dodavanju podataka.');
+                });
+        }
     </script>
 </body>
 </html>
