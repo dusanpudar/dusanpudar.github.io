@@ -7,16 +7,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
 </head>
 <body>
-    <h1>Učitaj QR kod</h1>
+    <h1>Učitaj QR kodddd</h1>
     <video id="video" width="300" height="200" autoplay></video>
     <button id="scanBtn">Skeniraj QR kod</button>
 
     <script>
         const video = document.getElementById('video');
 
+        // Proveri da li se kamera učitava
         navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
             .then(stream => {
                 video.srcObject = stream;
+            })
+            .catch(error => {
+                console.error('Greška prilikom pristupa kameri:', error);
+                alert('Ne mogu da pristupim kameri. Proveri dozvole.');
             });
 
         document.getElementById('scanBtn').addEventListener('click', () => {
@@ -39,7 +44,7 @@
         });
 
         function addToGoogleSheets(data) {
-            const scriptUrl = 'https://script.google.com/macros/s/1u46L2uCugmeBuQWJ-s4jtuWs4dCXIjU_Tf4vhkW6AIiO8xJN7IQZBIYj/exec';
+            const scriptUrl = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
             fetch(scriptUrl + '?data=' + encodeURIComponent(data))
                 .then(response => response.text())
                 .then(result => {
