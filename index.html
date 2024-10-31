@@ -15,14 +15,14 @@
     const video = document.getElementById("video");
 
     async function startScan() {
-      alert("Pokrećem skener...");
+      console.log("Pokrećem skener...");
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         video.srcObject = stream;
 
         video.addEventListener("loadeddata", () => {
-          alert("Kamera je pokrenuta, počinjem skeniranje...");
-          scanQRCode(video);
+          console.log("Kamera je pokrenuta, počinjem skeniranje...");
+          scanQRCode();
         }, false);
       } catch (error) {
         console.error("Greška prilikom pokretanja kamere: ", error);
@@ -30,7 +30,7 @@
       }
     }
 
-    function scanQRCode(video) {
+    function scanQRCode() {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
@@ -43,19 +43,19 @@
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
         if (code) {
-          clearInterval(scan);  // Zaustavi skeniranje
-          alert("QR kod pronađen: " + code.data);  // Prikazivanje podataka QR koda
-          const result = parseQRCode(code.data);  // parsiraj QR kod
+          clearInterval(scan);
+          console.log("QR kod pronađen: ", code.data);
+          const result = parseQRCode(code.data);  
           document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
-          sendToGoogleSheets(result);  // šalje podatke u Google Sheets
+          sendToGoogleSheets(result);  
         } else {
-          console.log("QR kod nije pronađen, pokušavam ponovo...");  // Informacija o neuspeloj detekciji
+          console.log("QR kod nije pronađen, pokušavam ponovo...");  
         }
-      }, 500);  // Podesio sam interval na 500 ms
+      }, 500);
     }
 
     function parseQRCode(data) {
-      const [pfr, time, amount] = data.split(";");  // primer parsiranja
+      const [pfr, time, amount] = data.split(";");  
       return { pfr, time, amount };
     }
 
@@ -73,10 +73,9 @@
       });
 
       if (response.ok) {
-        alert("Podaci uspešno poslati u Google Sheets");
+        console.log("Podaci uspešno poslati u Google Sheets");
       } else {
         console.error("Greška prilikom slanja podataka", response.statusText);
-        alert("Greška prilikom slanja podataka: " + response.statusText);
       }
     }
   </script>
