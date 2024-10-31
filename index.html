@@ -4,18 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unesi podatke</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007BFF; /* Plava boja za naslov */
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Širina forme */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF; /* Plava boja za dugme */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Tamnija plava boja pri prelazu miša */
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <h1>Unesi podatke o računu</h1>
     <form id="dataForm">
         <label for="pfrNumber">PFR broj:</label>
-        <input type="text" id="pfrNumber" required><br>
+        <input type="text" id="pfrNumber" required>
 
         <label for="time">Vreme:</label>
-        <input type="text" id="time" required><br>
+        <input type="text" id="time" required>
 
         <label for="amount">Iznos:</label>
-        <input type="text" id="amount" required><br>
+        <input type="text" id="amount" required>
 
         <button type="submit">Pošalji</button>
     </form>
