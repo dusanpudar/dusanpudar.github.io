@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Reader</title>
+    <title>Skeniraj QR kod</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
 </head>
 <body>
-    <h1>Učitaj QR kodddd</h1>
+    <h1>Skeniraj QR kod</h1>
     <video id="video" width="300" height="200" autoplay></video>
     <button id="scanBtn">Skeniraj QR kod</button>
+    <p id="message"></p>
 
     <script>
         const video = document.getElementById('video');
+        const message = document.getElementById('message');
 
-        // Proveri da li se kamera učitava
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+        // Učitaj kameru
+        navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
                 video.srcObject = stream;
             })
             .catch(error => {
-                console.error('Greška prilikom pristupa kameri:', error);
-                alert('Ne mogu da pristupim kameri. Proveri dozvole.');
+                message.textContent = 'Greška prilikom pristupa kameri. Proverite dozvole.';
             });
 
         document.getElementById('scanBtn').addEventListener('click', () => {
@@ -34,26 +35,23 @@
             const code = jsQR(imageData.data, canvas.width, canvas.height);
 
             if (code) {
-                const data = code.data;
-                console.log('QR Code data:', data);
-                // Ovde pozovi Google Apps Script
-                addToGoogleSheets(data);
+                const data = code.data; // Ovaj podatak sadrži QR kod
+                message.textContent = 'Skenirani podaci: ' + data;
+                addToGoogleSheets(data); // Poziv funkcije za slanje podataka
             } else {
-                alert('QR kod nije prepoznat');
+                message.textContent = 'QR kod nije prepoznat. Pokušajte ponovo.';
             }
         });
 
         function addToGoogleSheets(data) {
-            const scriptUrl = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+            const scriptUrl = 'https://script.google.com/macros/s/1u46L2uCugmeBuQWJ-s4jtuWs4dCXIjU_Tf4vhkW6AIiO8xJN7IQZBIYj/exec'; // Tvoj Script ID
             fetch(scriptUrl + '?data=' + encodeURIComponent(data))
                 .then(response => response.text())
                 .then(result => {
-                    console.log(result);
-                    alert('Podaci su uspešno dodati!');
+                    message.textContent = 'Podaci su uspešno dodati!';
                 })
                 .catch(error => {
-                    console.error('Greška:', error);
-                    alert('Došlo je do greške pri dodavanju podataka.');
+                    message.textContent = 'Greška prilikom dodavanja podataka.';
                 });
         }
     </script>
