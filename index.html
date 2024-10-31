@@ -5,7 +5,7 @@
   <title>QR Scanner</title>
 </head>
 <body>
-  <h2>QR skener za račun</h2>
+  <h2>QR skener za račune</h2>
   <video id="video" width="100%" height="auto" autoplay></video>
   <button onclick="startScan()">Pokreni skeniranje</button>
   <div id="result"></div>
@@ -33,7 +33,6 @@
     function scanQRCode() {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-
       const scan = setInterval(() => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -46,8 +45,12 @@
           clearInterval(scan);
           console.log("QR kod pronađen: ", code.data);
           const result = parseQRCode(code.data);  
-          document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
-          sendToGoogleSheets(result);  
+          if (result) {
+            document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
+            sendToGoogleSheets(result);  
+          } else {
+            alert("QR kod nije u ispravnom formatu!");
+          }
         } else {
           console.log("QR kod nije pronađen, pokušavam ponovo...");  
         }
@@ -55,8 +58,15 @@
     }
 
     function parseQRCode(data) {
-      const [pfr, time, amount] = data.split(";");  
-      return { pfr, time, amount };
+      // Proveri da li podatak sadrži očekivani format
+      const parts = data.split(";");
+      if (parts.length === 3) {
+        const [pfr, time, amount] = parts;  
+        return { pfr, time, amount };
+      } else {
+        console.error("Neispravan format QR koda: ", data);
+        return null; // Vraća null ako format nije ispravan
+      }
     }
 
     async function sendToGoogleSheets(result) {
