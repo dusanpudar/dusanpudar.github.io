@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
 </head>
 <body>
-    <h1>Skeniraj QR kod</h1>
+    <h1>Skeniraj QR kooood</h1>
     <video id="video" width="300" height="200" autoplay></video>
     <button id="scanBtn">Skeniraj QR kod</button>
     <p id="message"></p>
@@ -22,7 +22,7 @@
                 video.srcObject = stream;
             })
             .catch(error => {
-                message.textContent = 'Greška prilikom pristupa kameri. Proverite dozvole.';
+                message.textContent = 'Greška prilikom pristupa kameri: ' + error.message;
             });
 
         document.getElementById('scanBtn').addEventListener('click', () => {
@@ -48,7 +48,7 @@
             fetch(scriptUrl + '?data=' + encodeURIComponent(data))
                 .then(response => response.text())
                 .then(result => {
-                    message.textContent = 'Podaci su uspešno dodati!';
+                    message.textContent = 'Podaci su uspešno dodani!';
                 })
                 .catch(error => {
                     message.textContent = 'Greška prilikom dodavanja podataka.';
