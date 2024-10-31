@@ -5,7 +5,7 @@
   <title>QR Scanner</title>
 </head>
 <body>
-  <h2>QR skener za račune</h2>
+  <h2>QR skener za račun</h2>
   <video id="video" width="100%" height="auto" autoplay></video>
   <button onclick="startScan()">Pokreni skeniranje</button>
   <div id="result"></div>
@@ -13,12 +13,14 @@
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
   <script>
     const video = document.getElementById("video");
+    let scanning = false;
 
     async function startScan() {
       console.log("Pokrećem skener...");
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         video.srcObject = stream;
+        scanning = true; // Postavljamo flag da je skeniranje aktivno
 
         video.addEventListener("loadeddata", () => {
           console.log("Kamera je pokrenuta, počinjem skeniranje...");
@@ -34,6 +36,8 @@
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
       const scan = setInterval(() => {
+        if (!scanning) return; // Ako skeniranje nije aktivno, prekinuti skeniranje
+
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -43,11 +47,13 @@
 
         if (code) {
           clearInterval(scan);
+          scanning = false; // Zaustavi skeniranje
           console.log("QR kod pronađen: ", code.data);
           const result = parseQRCode(code.data);  
           if (result) {
             document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
             sendToGoogleSheets(result);  
+            stopCamera(); // Zaustavi kameru
           } else {
             alert("QR kod nije u ispravnom formatu!");
           }
@@ -87,6 +93,14 @@
       } else {
         console.error("Greška prilikom slanja podataka", response.statusText);
       }
+    }
+
+    function stopCamera() {
+      const stream = video.srcObject;
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+      video.srcObject = null;
+      console.log("Kamera zaustavljena.");
     }
   </script>
 </body>
