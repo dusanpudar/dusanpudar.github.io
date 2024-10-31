@@ -3,63 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skeniraj QR kod</title>
-    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <title>Dušan Pudar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
+    <link rel="icon" type="png" href="img/logo.png">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Skeniraj QR kod</h1>
-    <div id="reader" style="width:600px; height: 400px;"></div>
-    <div id="result" style="margin-top: 20px; font-size: 20px;"></div>
+
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container" style="display:none;">
+        <div class="profile">
+            <img id="profile-image" src="img/dusanpudar.jpg" alt="Moja slika" class="profile-img">
+            <h1>Hi! I'm Dušan</h1>
+            <p>Software Engineer | Tech Enthusiast | Passionate in Web Development</p>
+        </div>
+
+        <p>Find me on:</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/dusanpudar/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/dusanpudar" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="mailto:dusan@pudar.me" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://twitter.com/dusanpudar" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/dusanpudar" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <footer>
+            <p class="footer-text">Copyright <i class="fa-solid fa-copyright" style="color: #b0d236;"></i> 2024 Dušan Pudar. All rights reserved.</p>
+        </footer>
+    </div>
 
     <script>
-        const html5QrCode = new Html5Qrcode("reader");
-
-        // Funkcija koja se poziva kada je QR kod uspešno skeniran
-        function onScanSuccess(qrCodeMessage) {
-            document.getElementById("result").innerText = "Skenirani QR kod: " + qrCodeMessage;
-
-            // Pripremi podatke za slanje u Google Sheets
-            const data = {
-                pfr: qrCodeMessage, // Preuzmi PFR broj iz QR koda
-                timestamp: new Date().toISOString(), // Uzmi trenutni datum i vreme
-            };
-
-            // Šalji podatke u Google Sheets
-            fetch('https://sheets.googleapis.com/v4/spreadsheets/1ZCf7JHeAG21TM9BWY9wLVAZ0GnvaHhI7hLzxhERHMZ0/values/Sheet1!A1:append?valueInputOption=RAW&key=YOUR_API_KEY', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer YOUR_ACCESS_TOKEN` // Ako koristiš OAuth 2.0
-                },
-                body: JSON.stringify({
-                    values: [
-                        [data.pfr, data.timestamp] // Upisuje PFR i vreme
-                    ]
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Uspešno upisano:', data);
-            })
-            .catch((error) => {
-                console.error('Greška:', error);
-            });
-        }
-
-        // Opcije za skeniranje
-        const config = {
-            fps: 10, // broj frejmova u sekundi
-            qrbox: 250 // veličina kvadrata za skeniranje
-        };
-
-        // Pokreni skener
-        html5QrCode.start(
-            { facingMode: "environment" }, // koristi zadnju kameru (kamera za skeniranje)
-            config,
-            onScanSuccess)
-        .catch(err => {
-            console.error("Greška prilikom pokretanja skenera:", err);
-        });
+        setTimeout(function() {
+            document.querySelector('.loading-screen').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }, 1000);
     </script>
 </body>
 </html>
