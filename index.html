@@ -1,111 +1,109 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unesi podatke</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #007BFF; /* Plava boja za naslov */
-        }
-
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px; /* Širina forme */
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF; /* Plava boja za dugme */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3; /* Tamnija plava boja pri prelazu miša */
-        }
-
-        #message {
-            margin-top: 15px;
-            font-size: 14px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>QR Scanner</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    video {
+      width: 100%;
+      max-width: 500px; /* Podesi maksimalnu širinu videa */
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-    <h1>Unesi podatke o računu</h1>
-    <form id="dataForm">
-        <label for="pfrNumber">PFR broj računa:</label>
-        <input type="text" id="pfrNumber" required>
+  <h2>QR skener za račune</h2>
+  <video id="video" autoplay></video>
+  <button onclick="startScan()">Pokreni skeniranje</button>
+  <div id="result"></div>
 
-        <label for="time">Vreme računa:</label>
-        <input type="text" id="time" required>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
+  <script>
+    const video = document.getElementById("video");
+    let scanning = false;
 
-        <label for="amount">Iznos računa:</label>
-        <input type="text" id="amount" required>
+    async function startScan() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        video.srcObject = stream;
+        scanning = true;
+        console.log("Kamera pokrenuta, počinjem skeniranje...");
+        scanQRCode();
+      } catch (error) {
+        console.error("Greška prilikom pokretanja kamere: ", error);
+        alert("Greška prilikom pokretanja kamere: " + error.message);
+      }
+    }
 
-        <label for="description">Opis računa:</label>
-        <textarea id="description" rows="4" required></textarea>
+    function scanQRCode() {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
 
-        <button type="submit">Pošalji</button>
-    </form>
-    <p id="message"></p>
+      const scanInterval = setInterval(() => {
+        if (!scanning) return;
 
-    <script>
-        document.getElementById('dataForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            const pfrNumber = document.getElementById('pfrNumber').value;
-            const time = document.getElementById('time').value;
-            const amount = document.getElementById('amount').value;
-            const description = document.getElementById('description').value; // Dodato polje za opis
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-            const data = `${pfrNumber},${time},${amount},${description}`; // Dodaj opis u string
-            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyHwAurQYk5fllqNy6nCLyCq17nq29BOwJWGERW9tftjC2IZMjZdCJUS0KUWoT3Lg6q/exec';
+        if (code) {
+          clearInterval(scanInterval);
+          scanning = false; // Prekini skeniranje
+          const result = parseQRCode(code.data);
+          if (result) {
+            document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
+            sendToGoogleSheets(result);
+          } else {
+            alert("Neispravan format QR koda!");
+          }
+          stopCamera(); // Zaustavi kameru
+        }
+      }, 500);
+    }
 
-            fetch(scriptUrl + '?data=' + encodeURIComponent(data))
-                .then(response => response.text())
-                .then(result => {
-                    document.getElementById('message').textContent = result; // Prikazivanje rezultata
-                })
-                .catch(error => {
-                    document.getElementById('message').textContent = 'Greška prilikom dodavanja podataka: ' + error.message;
-                });
-        });
-    </script>
+    function parseQRCode(data) {
+      const parts = data.split(";");
+      if (parts.length === 3) {
+        return { pfr: parts[0], time: parts[1], amount: parts[2] };
+      }
+      return null;
+    }
+
+    async function sendToGoogleSheets(result) {
+      const SHEET_URL = "https://sheets.googleapis.com/v4/spreadsheets/1ZCf7JHeAG21TM9BWY9wLVAZ0GnvaHhI7hLzxhERHMZ0/values/A1:append?valueInputOption=USER_ENTERED&key=320647357285-2slvkr2jadah6hch048isjjoejhg3u8p.apps.googleusercontent.com";
+
+      const response = await fetch(SHEET_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          values: [[result.pfr, result.time, result.amount]]
+        })
+      });
+
+      if (response.ok) {
+        console.log("Podaci uspešno poslati u Google Sheets");
+      } else {
+        console.error("Greška prilikom slanja podataka", response.statusText);
+      }
+    }
+
+    function stopCamera() {
+      const stream = video.srcObject;
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+      video.srcObject = null;
+      console.log("Kamera zaustavljena.");
+    }
+  </script>
 </body>
 </html>
