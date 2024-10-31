@@ -1,46 +1,78 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dušan Pudar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
-    <link rel="icon" type="png" href="img/logo.png">
-    <link rel="stylesheet" href="main.css">
+    <title>Skeniranje računa</title>
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
-
-    <div class="loading-screen">
-        <div class="loader"></div>
-    </div>
-
-    <div class="container" style="display:none;">
-        <div class="profile">
-            <img id="profile-image" src="img/dusanpudar.jpg" alt="Moja slika" class="profile-img">
-            <h1>Hi! I'm Dušan</h1>
-            <p>Software Engineer | Tech Enthusiast | Passionate in Web Development</p>
-        </div>
-
-        <p>Find me on:</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/dusanpudar/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/dusanpudar" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="mailto:dusan@pudar.me" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://twitter.com/dusanpudar" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/dusanpudar" class="social-icon"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <footer>
-            <p class="footer-text">Copyright <i class="fa-solid fa-copyright" style="color: #b0d236;"></i> 2024 Dušan Pudar. All rights reserved.</p>
-        </footer>
-    </div>
+    <h1>Skeniraj račun</h1>
+    <button id="authorize_button">Autorizuj</button>
+    <button id="scanButton" style="display: none;">Skeniraj QR kod</button>
 
     <script>
-        setTimeout(function() {
-            document.querySelector('.loading-screen').style.display = 'none';
-            document.querySelector('.container').style.display = 'block';
-        }, 1000);
+        const CLIENT_ID = '320647357285-2slvkr2jadah6hch048isjjoejhg3u8p.apps.googleusercontent.com';
+        const API_KEY = 'TVOJ_API_KLJUČ'; // Postavi svoj API ključ
+        const SHEET_ID = '1ZCf7JHeAG21TM9BWY9wLVAZ0GnvaHhI7hLzxhERHMZ0';
+        
+        const DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+        const SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+
+        function handleClientLoad() {
+            gapi.load("client:auth2", initClient);
+        }
+
+        function initClient() {
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES,
+            }).then(() => {
+                document.getElementById("authorize_button").onclick = handleAuthClick;
+                document.getElementById("scanButton").onclick = () => {
+                    // Ovde dodaj kod za skeniranje QR koda
+                    const pfr = '123456789'; // Primer PFR broja
+                    const time = new Date().toISOString(); // Trenutno vreme
+                    const amount = '1500'; // Primer iznosa
+
+                    addDataToSheet(pfr, time, amount);
+                };
+            });
+        }
+
+        function handleAuthClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+        }
+
+        async function addDataToSheet(pfr, time, amount) {
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1!A1:C1:append?valueInputOption=USER_ENTERED`;
+
+            const data = {
+                values: [
+                    [pfr, time, amount]
+                ]
+            };
+
+            const response = await gapi.client.request({
+                path: url,
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status === 200) {
+                console.log('Podaci su uspešno dodati u Sheet!');
+            } else {
+                console.error('Došlo je do greške:', response.result.error.message);
+            }
+        }
+
+        // Učitaj klijent na učitavanje stranice
+        window.onload = handleClientLoad;
     </script>
 </body>
 </html>
