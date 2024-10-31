@@ -34,7 +34,7 @@
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
-      setInterval(() => {
+      const scan = setInterval(() => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -43,12 +43,15 @@
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
         if (code) {
+          clearInterval(scan);  // Zaustavi skeniranje
           alert("QR kod pronađen: " + code.data);  // Prikazivanje podataka QR koda
           const result = parseQRCode(code.data);  // parsiraj QR kod
           document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
           sendToGoogleSheets(result);  // šalje podatke u Google Sheets
+        } else {
+          console.log("QR kod nije pronađen, pokušavam ponovo...");  // Informacija o neuspeloj detekciji
         }
-      }, 1000);
+      }, 500);  // Podesio sam interval na 500 ms
     }
 
     function parseQRCode(data) {
