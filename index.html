@@ -3,10 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>QR Scanner</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    video {
+      width: 100%;
+      max-width: 500px; /* Podesi maksimalnu širinu videa */
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-  <h2>QR skener za račun</h2>
-  <video id="video" width="100%" height="auto" autoplay></video>
+  <h2>QR skener za račune</h2>
+  <video id="video" autoplay></video>
   <button onclick="startScan()">Pokreni skeniranje</button>
   <div id="result"></div>
 
@@ -16,16 +28,12 @@
     let scanning = false;
 
     async function startScan() {
-      console.log("Pokrećem skener...");
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         video.srcObject = stream;
-        scanning = true; // Postavljamo flag da je skeniranje aktivno
-
-        video.addEventListener("loadeddata", () => {
-          console.log("Kamera je pokrenuta, počinjem skeniranje...");
-          scanQRCode();
-        }, false);
+        scanning = true;
+        console.log("Kamera pokrenuta, počinjem skeniranje...");
+        scanQRCode();
       } catch (error) {
         console.error("Greška prilikom pokretanja kamere: ", error);
         alert("Greška prilikom pokretanja kamere: " + error.message);
@@ -35,8 +43,9 @@
     function scanQRCode() {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-      const scan = setInterval(() => {
-        if (!scanning) return; // Ako skeniranje nije aktivno, prekinuti skeniranje
+
+      const scanInterval = setInterval(() => {
+        if (!scanning) return;
 
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -46,33 +55,26 @@
         const code = jsQR(imageData.data, canvas.width, canvas.height);
 
         if (code) {
-          clearInterval(scan);
-          scanning = false; // Zaustavi skeniranje
-          console.log("QR kod pronađen: ", code.data);
-          const result = parseQRCode(code.data);  
+          clearInterval(scanInterval);
+          scanning = false; // Prekini skeniranje
+          const result = parseQRCode(code.data);
           if (result) {
             document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
-            sendToGoogleSheets(result);  
-            stopCamera(); // Zaustavi kameru
+            sendToGoogleSheets(result);
           } else {
-            alert("QR kod nije u ispravnom formatu!");
+            alert("Neispravan format QR koda!");
           }
-        } else {
-          console.log("QR kod nije pronađen, pokušavam ponovo...");  
+          stopCamera(); // Zaustavi kameru
         }
       }, 500);
     }
 
     function parseQRCode(data) {
-      // Proveri da li podatak sadrži očekivani format
       const parts = data.split(";");
       if (parts.length === 3) {
-        const [pfr, time, amount] = parts;  
-        return { pfr, time, amount };
-      } else {
-        console.error("Neispravan format QR koda: ", data);
-        return null; // Vraća null ako format nije ispravan
+        return { pfr: parts[0], time: parts[1], amount: parts[2] };
       }
+      return null;
     }
 
     async function sendToGoogleSheets(result) {
