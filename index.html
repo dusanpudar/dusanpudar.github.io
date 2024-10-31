@@ -1,16 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>QR Scanner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Scanner</title>
 </head>
 <body>
-  <h2>QR skener za račune</h2>
-  <video id="video" width="100%" height="auto" autoplay></video>
-  <button onclick="startScan()">Pokreni skeniranje</button>
-  <div id="result"></div>
+    <h2>QR skener za račune</h2>
+    <video id="video" width="100%" height="auto" autoplay></video>
+    <button id="startButton">Pokreni skeniranje</button>
+    <div id="result"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
-  <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
+    <script>
+        const video = document.getElementById("video");
+
+        document.getElementById("startButton").addEventListener("click", startScan);
+
+        async function startScan() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                video.srcObject = stream;
+
+                video.addEventListener("loadeddata", () => scanQRCode(video), false);
+            } catch (error) {
+                console.error("Greška prilikom pokretanja kamere: ", error);
+            }
+        }
+
+        function scanQRCode(video) {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            setInterval(() => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+                if (code) {
+                    const result = parseQRCode(code.data);  // parsiraj QR kod
+                    document.getElementById("result").textContent = `PFR: ${result.pfr}, Vreme: ${result.time}, Iznos: ${result.amount}`;
+                    sendToGoogleSheets(result);  // šalje podatke u Google Sheets
+                }
+            }, 1000);
+        }
+
+        function parseQRCode(data) {
+            const [pfr, time, amount] = data.split(";");  // prilagodi delimiter prema tvojoj QR strukturi
+            return { pfr, time, amount };
+        }
+
+        async function sendToGoogleSheets(result) {
+            const SHEET_URL = "https://sheets.googleapis.com/v4/spreadsheets/1ZCf7JHeAG21TM9BWY9wLVAZ0GnvaHhI7hLzxhERHMZ0/values/Sheet1!A1:append?valueInputOption=RAW&key=320647357285-2slvkr2jadah6hch048isjjoejhg3u8p.apps.googleusercontent.com";
+            const response = await fetch(SHEET_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    values: [[result.pfr, result.time, result.amount]]
+                })
+            });
+
+            if (response.ok) {
+                console.log("Podaci uspešno poslati u Google Sheets");
+            } else {
+                console.error("Greška prilikom slanja podataka", response.statusText);
+            }
+        }
+    </script>
 </body>
 </html>
