@@ -35,8 +35,9 @@ domReady(function () {
 async function sendDataToGoogleSheets(data) {
     const sheetId = "1vNjknb6PX2Ayi1_cO_4kRFS9sNhCVASu74lEhIRjw4A"; // Novi ID Sheet-a
     const apiKey = "AIzaSyAwdfWjOwX4OvGyYZBpegA45g_yyDdF3Gk"; // Tvoj API ključ
+    const sheetName = "Sheet1";
 
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:append?valueInputOption=RAW&key=${apiKey}`;
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!A1:append?valueInputOption=RAW&key=${apiKey}`;
     const options = {
         method: 'POST',
         headers: {
