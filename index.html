@@ -1,46 +1,29 @@
+<!-- Index.html file -->
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dušan Pudar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
-    <link rel="icon" type="png" href="img/logo.png">
-    <link rel="stylesheet" href="main.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="style.css">
+    <title>QR Code Scanner / Reader
+    </title>
 </head>
+
 <body>
-
-    <div class="loading-screen">
-        <div class="loader"></div>
-    </div>
-
-    <div class="container" style="display:none;">
-        <div class="profile">
-            <img id="profile-image" src="img/dusanpudar.jpg" alt="Moja slika" class="profile-img">
-            <h1>Hi! I'm Dušan</h1>
-            <p>Software Engineer | Tech Enthusiast | Passionate in Web Development</p>
+    <div class="container">
+        <h1>Scan QR Codes</h1>
+        <div class="section">
+            <div id="my-qr-reader">
+            </div>
         </div>
-
-        <p>Find me on:</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/dusanpudar/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/dusanpudar" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="mailto:dusan@pudar.me" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://twitter.com/dusanpudar" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/dusanpudar" class="social-icon"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <footer>
-            <p class="footer-text">Copyright <i class="fa-solid fa-copyright" style="color: #b0d236;"></i> 2024 Dušan Pudar. All rights reserved.</p>
-        </footer>
     </div>
-
-    <script>
-        setTimeout(function() {
-            document.querySelector('.loading-screen').style.display = 'none';
-            document.querySelector('.container').style.display = 'block';
-        }, 1000);
+    <script
+        src="https://unpkg.com/html5-qrcode">
     </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
