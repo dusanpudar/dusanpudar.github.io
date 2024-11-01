@@ -10,7 +10,7 @@ function domReady(fn) {
 }
 
 async function sendToGoogleSheets(data) {
-    const url = 'https://script.google.com/macros/s/AKfycbylwSOrZS2o4d9TP2ogUuXpkk3a1uC78Xq9ovVMUepLk9ndwpthKiL154xWrYXY3HAjdA/exec'; // Zamenite sa URL-om koji ste dobili prilikom postavljanja Google Apps Script
+    const url = 'https://script.google.com/macros/s/https://script.google.com/macros/library/d/1Z5jaUgitmOPVoI7XYW5hUO3kNh06-1SOGsi68YryQoq78ZuYkrnVPv-a/2/exec'; // Zamenite sa URL-om koji ste dobili prilikom postavljanja Google Apps Script
 
     try {
         const response = await fetch(url, {
