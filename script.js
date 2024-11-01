@@ -12,11 +12,16 @@ domReady(function () {
 
     // If QR code is found
     function onScanSuccess(decodeText, decodeResult) {
-        // Parse QR code data if it's JSON or structured format
-        const qrData = parseQRData(decodeText); // Implement this function based on the QR format
+        // Stop the scanner
+        htmlscanner.clear(); // Zaustavi skener
 
-        // Send parsed data to Google Sheets
-        sendDataToGoogleSheets(qrData);
+        // Parsiranje podataka iz QR koda
+        const qrData = parseQRData(decodeText);
+        sendDataToGoogleSheets(qrData).then(() => {
+            console.log("Podaci su poslati u Google Sheets");
+        }).catch(error => {
+            console.error("Greška prilikom slanja podataka:", error);
+        });
     }
 
     let htmlscanner = new Html5QrcodeScanner(
@@ -26,10 +31,10 @@ domReady(function () {
     htmlscanner.render(onScanSuccess);
 });
 
-// Helper function to send data to Google Sheets
+// Funkcija za slanje podataka u Google Sheets
 async function sendDataToGoogleSheets(data) {
-    const sheetId = "1vNjknb6PX2Ayi1_cO_4kRFS9sNhCVASu74lEhIRjw4A"; // Your sheet ID
-    const apiKey = "AIzaSyAwdfWjOwX4OvGyYZBpegA45g_yyDdF3Gk"; // Replace with your actual API key
+    const sheetId = "1vNjknb6PX2Ayi1_cO_4kRFS9sNhCVASu74lEhIRjw4A"; // Novi ID Sheet-a
+    const apiKey = "AIzaSyAwdfWjOwX4OvGyYZBpegA45g_yyDdF3Gk"; // Tvoj API ključ
 
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:append?valueInputOption=RAW&key=${apiKey}`;
     const options = {
@@ -42,19 +47,13 @@ async function sendDataToGoogleSheets(data) {
         })
     };
 
-    try {
-        const response = await fetch(url, options);
-        if (!response.ok) throw new Error("Failed to send data to Google Sheets");
-        console.log("Data successfully sent to Google Sheets");
-    } catch (error) {
-        console.error("Error:", error);
-    }
+    const response = await fetch(url, options);
+    if (!response.ok) throw new Error("Failed to send data to Google Sheets");
 }
 
-// Function to parse QR code data based on expected format
+// Funkcija za parsiranje podataka iz QR koda
 function parseQRData(qrText) {
-    // Example of extracting PFR, vreme, iznos from the QR text format
-    const data = {}; // Parse qrText and fill this object
+    const data = {}; 
     data.PFR = qrText.match(/PFR:(\d+)/)[1];
     data.vreme = qrText.match(/Vreme:(\d+:\d+)/)[1];
     data.iznos = qrText.match(/Iznos:(\d+\.\d+)/)[1];
