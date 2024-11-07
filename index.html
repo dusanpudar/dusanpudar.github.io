@@ -85,7 +85,7 @@
     </div>
 
     <div class="text-center download-btn">
-      <button class="btn btn-primary" id="downloadAll" style="display: none;">Preuzmi sve diplome</button><br><br><br><br>
+      <button class="btn btn-primary" id="downloadAll" style="display: none;" onclick="downloadAllDiplomas()">Preuzmi sve diplome</button><br><br><br><br>
     </div>
 
     <div id="diplomaGallery">
@@ -112,6 +112,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    let generatedDiplomas = [];  // Array to hold the generated diploma URLs
+
     document.getElementById('csvFile').addEventListener('change', function (event) {
       const file = event.target.files[0];
       if (file && file.name.endsWith('.csv')) {
@@ -134,9 +136,7 @@
           const data = results.data;
 
           if (data.length > 0 && data[0].Ime_i_prezime_polaznika && data[0].Grad && data[0].Datum) {
-            // Prikazivanje dugmeta odmah nakon učitavanja CSV fajla
-            document.getElementById('downloadAll').style.display = 'block';
-
+            document.getElementById('downloadAll').style.display = 'block';  // Show the "Download all" button
             data.forEach((row, index) => {
               const name = row.Ime_i_prezime_polaznika;
               const cityAndDate = `${row.Grad}, ${row.Datum}`;
@@ -176,6 +176,7 @@
         ctx.fillText(cityAndDate, 230, 717);
 
         const dataUrl = canvas.toDataURL();
+        generatedDiplomas.push({ name, dataUrl });  // Store the generated diploma URL
         showDiplomaPreview(dataUrl, name, index);
       };
     }
@@ -205,7 +206,18 @@
       link.download = `${name}_diploma.png`;
       link.click();
     }
-  </script>
 
+    function downloadAllDiplomas() {
+      const zip = new JSZip();
+
+      generatedDiplomas.forEach(diploma => {
+        zip.file(`${diploma.name}_diploma.png`, diploma.dataUrl.split(',')[1], {base64: true});
+      });
+
+      zip.generateAsync({ type: 'blob' }).then(function (content) {
+        saveAs(content, "diplomas.zip");
+      });
+    }
+  </script>
 </body>
 </html>
