@@ -1,241 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generisanje Diploma</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Argentum+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin-top: 20px;
-      background-color: #F4F7FF;
-    }
-    #diplomaGallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    #diplomaGallery img {
-      cursor: pointer;
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      transition: transform 0.3s ease-in-out;
-    }
-    #diplomaGallery img:hover {
-      transform: scale(1.1);
-    }
-    .download-btn {
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      margin-top: 20px;
-    }
-    .download-btn button {
-      margin: 5px;
-    }
-    .modal-body img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    .modal-footer {
-      justify-content: center;
-    }
-    .modal-body {
-      text-align: center;
-    }
-    .gallery-item {
-      flex: 1 1 calc(25% - 20px);
-      max-width: calc(25% - 20px);
-    }
-    @media (max-width: 1200px) {
-      .gallery-item {
-        flex: 1 1 calc(33.33% - 20px);
-        max-width: calc(33.33% - 20px);
-      }
-    }
-    @media (max-width: 768px) {
-      .gallery-item {
-        flex: 1 1 calc(50% - 20px);
-        max-width: calc(50% - 20px);
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dušan Pudar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
+    <link rel="icon" type="png" href="img/logo.png">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="text-center">Generisanje Diploma</h1>
-    
-    <div class="mb-3">
-      <input type="file" id="csvFile" class="form-control" accept=".csv">
+    <div class="loading-screen">
+        <div class="loader"></div>
     </div>
 
-    <div class="text-center download-btn">
-      <button class="btn btn-primary" id="downloadAll" style="display: none;" onclick="downloadAllDiplomas()">Preuzmi sve diplome</button><br><br><br><br>
-    </div>
-
-    <div id="diplomaGallery">
-    </div>
-  </div>
-
-  <div class="modal fade" id="diplomaModal" tabindex="-1" aria-labelledby="diplomaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="diplomaModalLabel">Pregled Diplome</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="container" style="display:none;">
+        <div class="profile">
+            <img id="profile-image" src="img/dusanpudar.jpg" alt="Moja slika" class="profile-img">
+            <h1>Hi! I'm Dušan</h1>
+            <p>Software Engineer | Tech Enthusiast | Passionate in Web Development</p>
         </div>
-        <div class="modal-body">
-          <img id="diplomaModalImg" src="" alt="Diploma Image">
+
+        <p>Find me on:</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/dusanpudar/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/dusanpudar" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="mailto:dusan@pudar.me" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://twitter.com/dusanpudar" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/dusanpudar" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="modal-footer">
-          <button id="downloadBtn" class="btn btn-success">Preuzmi</button>
-        </div>
-      </div>
+
+        <footer>
+            <p class="footer-text">Copyright <i class="fa-solid fa-copyright" style="color: #b0d236;"></i> 2024 Dušan Pudar. All rights reserved.</p>
+        </footer>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    let generatedDiplomas = [];
-    const backgroundImages = {
-      "Web programiranje – moj prvi web sajt": "web_programiranje.png",
-      "Scratch 1": "scratch.png",
-      // Dodaj ovde ostale pozadine za kurs
-    };
-
-    document.getElementById('csvFile').addEventListener('change', function (event) {
-      const file = event.target.files[0];
-      if (file && file.name.endsWith('.csv')) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const csvData = e.target.result;
-          parseCSV(csvData);
-        };
-        reader.readAsText(file);
-      } else {
-        alert('Molimo vas da izaberete CSV fajl.');
-      }
-    });
-
-    function parseCSV(csvData) {
-      Papa.parse(csvData, {
-        header: true,
-        dynamicTyping: true,
-        complete: function (results) {
-          const data = results.data;
-
-          if (data.length > 0 && data[0].Ime_i_prezime_polaznika && data[0].Grad && data[0].Datum && data[0].Kurs) {
-            document.getElementById('downloadAll').style.display = 'block';  
-            data.forEach((row, index) => {
-              const name = row.Ime_i_prezime_polaznika;
-              const cityAndDate = `${row.Grad}, ${row.Datum}`;
-              const course = row.Kurs; 
-              generateDiploma(name, cityAndDate, course, index);
-            });
-          } else {
-            alert('CSV fajl mora imati kolone: Ime_i_prezime_polaznika, Grad, Datum, Kurs.');
-          }
-        },
-        error: function(error) {
-          console.error("Došlo je do greške pri parsiranju CSV fajla:", error);
-        }
-      });
-    }
-
-    function generateDiploma(name, cityAndDate, course, index) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = 3508;  
-      canvas.height = 2481;  
-
-      const diplomaTemplateSrc = backgroundImages[course] || "default_template.png"; // Ako kurs nema pozadinu, koristi default
-      const img = new Image();
-      img.src = diplomaTemplateSrc;
-      img.onload = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        // Ime i prezime (italic)
-        ctx.font = 'italic 180px "Argentum Sans", sans-serif';
-        ctx.fillStyle = getNameColor(course);
-        ctx.textAlign = 'center';
-        ctx.fillText(name, canvas.width / 2, 1725);
-
-        // Grad i datum (nije italic)
-        ctx.font = '48px "Argentum Sans", sans-serif';
-        ctx.fillStyle = '#4a4a4a';
-        ctx.textAlign = 'center';
-        ctx.fillText(cityAndDate, canvas.width / 5, 2315);
-
-        const dataUrl = canvas.toDataURL();
-        generatedDiplomas.push({ name, dataUrl });
-        showDiplomaPreview(dataUrl, name, index);
-      };
-    }
-
-    function getNameColor(course) {
-      if (course === "Scratch 1") {
-        return '#E68425'; // Boja za Scratch 1
-      } else if (course === "Web programiranje – moj prvi web sajt") {
-        return '#6F6097'; // Boja za Web programiranje
-      }
-      return '#4a4a4a'; // Podrazumevana boja
-    }
-
-    function showDiplomaPreview(dataUrl, name, index) {
-      const galleryContainer = document.getElementById('diplomaGallery');
-      const previewDiv = document.createElement('div');
-      previewDiv.classList.add('gallery-item');
-      previewDiv.innerHTML = `  
-        <img src="${dataUrl}" alt="Diploma ${index + 1}" class="img-thumbnail" onclick="showFullImage('${dataUrl}', '${name}')">
-      `;
-      galleryContainer.appendChild(previewDiv);
-    }
-
-    function showFullImage(dataUrl, name) {
-      const modal = new bootstrap.Modal(document.getElementById('diplomaModal'));
-      const modalImg = document.getElementById('diplomaModalImg');
-      modalImg.src = dataUrl;
-      document.getElementById('diplomaModalLabel').textContent = name;
-      document.getElementById('downloadBtn').onclick = function() {
-        downloadDiploma(dataUrl, name);
-      };
-      modal.show();
-    }
-
-    function downloadDiploma(dataUrl, name) {
-      const link = document.createElement('a');
-      link.href = dataUrl;
-      link.download = `${name}_diploma.png`;
-      link.click();
-    }
-
-    function downloadAllDiplomas() {
-      generatedDiplomas.forEach((diploma) => {
-        const link = document.createElement('a');
-        link.href = diploma.dataUrl;
-        link.download = `${diploma.name}_diploma.png`;
-        link.click();
-      });
-    }
-  </script>
-
+    <script>
+        setTimeout(function() {
+            document.querySelector('.loading-screen').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }, 1000);
+    </script>
 </body>
 </html>
