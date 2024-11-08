@@ -1,46 +1,237 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dušan Pudar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap">
-    <link rel="icon" type="png" href="img/logo.png">
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generisanje Diploma</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Argentum+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Stilska podešavanja */
+    .gallery-item {
+      display: inline-block;
+      margin: 15px;
+    }
+    .img-thumbnail {
+      max-width: 250px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1 class="text-center">Generisanje Diploma</h1>
 
-    <div class="loading-screen">
-        <div class="loader"></div>
+    <div class="mb-3 text-center">
+      <button class="btn btn-outline-primary" onclick="showCsvInput()">Generisanje preko CSV fajla</button>
+      <button class="btn btn-outline-secondary" onclick="showManualInput()">Generisanje ručnim unosom</button>
     </div>
 
-    <div class="container" style="display:none;">
-        <div class="profile">
-            <img id="profile-image" src="img/dusanpudar.jpg" alt="Moja slika" class="profile-img">
-            <h1>Hi! I'm Dušan</h1>
-            <p>Software Engineer | Tech Enthusiast | Passionate in Web Development</p>
-        </div>
-
-        <p>Find me on:</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/dusanpudar/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/dusanpudar" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="mailto:dusan@pudar.me" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://twitter.com/dusanpudar" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/dusanpudar" class="social-icon"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <footer>
-            <p class="footer-text">Copyright <i class="fa-solid fa-copyright" style="color: #b0d236;"></i> 2024 Dušan Pudar. All rights reserved.</p>
-        </footer>
+    <!-- Sekcija za CSV unos -->
+    <div id="csvSection" style="display: none;">
+      <input type="file" id="csvFile" class="form-control" accept=".csv">
+      <div class="text-center mt-3 d-flex justify-content-center">
+        <button class="btn btn-primary" id="downloadAll" style="display: none;" onclick="downloadAllDiplomas()">Preuzmi sve diplome</button>
+      </div>
     </div>
 
-    <script>
-        setTimeout(function() {
-            document.querySelector('.loading-screen').style.display = 'none';
-            document.querySelector('.container').style.display = 'block';
-        }, 1000);
-    </script>
+    <!-- Sekcija za ručni unos -->
+    <div id="manualSection" style="display: none;">
+      <div class="mb-3">
+        <input type="text" id="manualName" class="form-control" placeholder="Ime i prezime">
+      </div>
+      <div class="mb-3">
+        <input type="text" id="manualCityAndDate" class="form-control" placeholder="Grad, Datum (npr. Beograd, 01.01.2024)">
+      </div>
+      <div class="mb-3">
+        <select id="manualCourse" class="form-control">
+          <option>--Odaberi kurs--</option>
+          <option value="Web programiranje – moj prvi web sajt">Web programiranje – moj prvi web sajt</option>
+          <option value="Scratch 1">Scratch 1</option>
+          <!-- Dodajte više opcija po potrebi -->
+        </select>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success" onclick="generateManualDiploma()">Generiši diplomu</button>
+      </div>
+    </div>
+
+    <div id="diplomaGallery" class="text-center"></div>
+  </div>
+
+  <!-- Modal za prikaz pune diplome -->
+  <div class="modal fade" id="diplomaModal" tabindex="-1" aria-labelledby="diplomaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diplomaModalLabel">Diploma</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="diplomaModalImg" src="" alt="Diploma" class="img-fluid">
+        </div>
+        <div class="modal-footer">
+          <button id="downloadBtn" class="btn btn-primary">Preuzmi diplomu</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    let generatedDiplomas = [];
+    const backgroundImages = {
+      "Web programiranje – moj prvi web sajt": "web_programiranje.png",
+      "Scratch 1": "scratch.png",
+    };
+
+    function showCsvInput() {
+      resetDiplomas();
+      document.getElementById('csvSection').style.display = 'block';
+      document.getElementById('manualSection').style.display = 'none';
+    }
+
+    function showManualInput() {
+      resetDiplomas();
+      document.getElementById('manualSection').style.display = 'block';
+      document.getElementById('csvSection').style.display = 'none';
+    }
+
+    function resetDiplomas() {
+      generatedDiplomas = [];
+      document.getElementById('diplomaGallery').innerHTML = '';
+      document.getElementById('downloadAll').style.display = 'none';
+    }
+
+    document.getElementById('csvFile').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file && file.name.endsWith('.csv')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const csvData = e.target.result;
+          parseCSV(csvData);
+        };
+        reader.readAsText(file);
+      } else {
+        alert('Molimo vas da izaberete CSV fajl.');
+      }
+    });
+
+    function parseCSV(csvData) {
+      Papa.parse(csvData, {
+        header: true,
+        dynamicTyping: true,
+        complete: function (results) {
+          const data = results.data;
+          if (data.length > 0 && data[0].Ime_i_prezime_polaznika && data[0].Grad && data[0].Datum && data[0].Kurs) {
+            data.forEach((row, index) => {
+              const name = row.Ime_i_prezime_polaznika;
+              const cityAndDate = `${row.Grad}, ${row.Datum}`;
+              const course = row.Kurs;
+              generateDiploma(name, cityAndDate, course, index);
+            });
+            document.getElementById('downloadAll').style.display = 'block';
+          } else {
+            alert('CSV fajl mora imati kolone: Ime_i_prezime_polaznika, Grad, Datum, Kurs.');
+          }
+        },
+        error: function(error) {
+          console.error("Došlo je do greške pri parsiranju CSV fajla:", error);
+        }
+      });
+    }
+
+    function generateManualDiploma() {
+      const name = document.getElementById('manualName').value;
+      const cityAndDate = document.getElementById('manualCityAndDate').value;
+      const course = document.getElementById('manualCourse').value;
+      if (name && cityAndDate && course) {
+        generateDiploma(name, cityAndDate, course, generatedDiplomas.length);
+        document.getElementById('manualName').value = '';
+        document.getElementById('manualCityAndDate').value = '';
+        document.getElementById('manualCourse').value = 'Web programiranje – moj prvi web sajt';
+      } else {
+        alert("Molimo vas da popunite sva polja.");
+      }
+    }
+
+    function generateDiploma(name, cityAndDate, course, index) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 3508;
+      canvas.height = 2481;
+
+      const diplomaTemplateSrc = backgroundImages[course] || "default_template.png";
+      const img = new Image();
+      img.src = diplomaTemplateSrc;
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        ctx.font = 'italic 180px "Argentum Sans", sans-serif';
+        ctx.fillStyle = getNameColor(course);
+        ctx.textAlign = 'center';
+        ctx.fillText(name, canvas.width / 2, 1725);
+
+        ctx.font = '48px "Argentum Sans", sans-serif';
+        ctx.fillStyle = '#4a4a4a';
+        ctx.textAlign = 'center';
+        ctx.fillText(cityAndDate, canvas.width / 5, 2315);
+
+        const dataUrl = canvas.toDataURL();
+        generatedDiplomas.push({ name, dataUrl });
+        showDiplomaPreview(dataUrl, name, index);
+      };
+    }
+
+    function getNameColor(course) {
+      return course === "Scratch 1" ? '#E68425' : (course === "Web programiranje – moj prvi web sajt" ? '#6F6097' : '#000');
+    }
+
+    function showDiplomaPreview(dataUrl, name, index) {
+      const galleryContainer = document.getElementById('diplomaGallery');
+      const previewDiv = document.createElement('div');
+      previewDiv.classList.add('gallery-item');
+
+      const previewImage = document.createElement('img');
+      previewImage.src = dataUrl;
+      previewImage.classList.add('img-thumbnail');
+      previewImage.style.maxWidth = '400px';
+      previewImage.addEventListener('click', () => openModal(dataUrl, name));
+
+      previewDiv.appendChild(previewImage);
+      galleryContainer.appendChild(previewDiv);
+    }
+
+    function openModal(dataUrl, name) {
+      const diplomaModal = new bootstrap.Modal(document.getElementById('diplomaModal'));
+      document.getElementById('diplomaModalImg').src = dataUrl;
+      document.getElementById('downloadBtn').onclick = () => downloadDiploma(dataUrl, name);
+      diplomaModal.show();
+    }
+
+    function downloadDiploma(dataUrl, name) {
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = `${name}_diploma.png`;
+      link.click();
+    }
+
+    function downloadAllDiplomas() {
+      const zip = new JSZip();
+      generatedDiplomas.forEach(diploma => {
+        const base64Data = diploma.dataUrl.split(',')[1];
+        zip.file(`${diploma.name}_diploma.png`, base64Data, { base64: true });
+      });
+      zip.generateAsync({ type: 'blob' }).then(content => {
+        saveAs(content, 'Diplome.zip');
+      });
+    }
+  </script>
 </body>
 </html>
