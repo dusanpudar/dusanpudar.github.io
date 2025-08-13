@@ -168,12 +168,13 @@
         datetime: form.datetime.value
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbxV5Gj2sVszuXcraO5BVmMl3DE82oFfO21bLkliEWMMDYkQ_oEJQV-HeE1WlFGU_Swr/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwPKhrNMRWLc7KvDKkyMtLpK0Q-k_svtmZ535IoNSpRNLTu6zYxIX9uTxzLZRdpV64/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json"
         }
+        mode: "cors" 
       })
         .then(res => res.json())
         .then(res => {
@@ -197,3 +198,4 @@
 </body>
 
 </html>
+
