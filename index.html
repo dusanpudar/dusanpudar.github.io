@@ -1,42 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dušan Pudar | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Pacifico&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="img/favicon.png" type="image/png">
-</head>
-<body>
-  <div class="diag-bg"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dušan Pudar – Frontend Developer & Designer</title>
 
-  <div class="card-wrapper">
-    <div class="card">
-      <div class="card-face card-front">
-        <img src="img/me.jpg" alt="Dušan Pudar" class="profile-img">
-        <h1>Dušan Pudar</h1>
-        <p class="description">
-          I am an Electrical & Computer Engineering graduate and a passionate Web Developer. <br>
-          I create modern, sleek, and interactive web experiences, blending creativity and
-          technical expertise.
-        </p>
-      </div>
-      <div class="card-face card-back">
-        <h2>Connect with me</h2>
-        <p>Follow me on social media and check out my projects!</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Meta SEO -->
+    <meta
+      name="description"
+      content="Portfolio Dušana Pudara – Web Developer, sa fokusom na moderne web sajtove, animacije i interaktivni dizajn."
+    />
+    <meta name="keywords" content="Dušan Pudar, web developer, landing page" />
+    <meta name="author" content="Dušan Pudar" />
+    <meta name="robots" content="index, follow" />
 
-  <div class="signature">© Dušan Pudar</div>
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Dušan Pudar" />
+    <meta property="og:description" content="Dušan Pudar - Web Developer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.pudar.me/" />
+    <meta property="og:image" content="https://www.pudar.me/img/favicon.png" />
 
-</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png" />
+
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <canvas id="particlesCanvas"></canvas>
+
+    <main class="center-content">
+      <h1>Dušan Pudar</h1>
+      <nav class="socials" aria-label="Social Media Links">
+        <a
+          href="https://linkedin.com/in/dusanpudar"
+          target="_blank"
+          aria-label="LinkedIn Profile"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://twitter.com/dusanpudar"
+          target="_blank"
+          aria-label="Twitter Profile"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a
+          href="https://instagram.com/dusanpudar"
+          target="_blank"
+          aria-label="Instagram Profile"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </nav>
+    </main>
+
+    <footer>
+      <p>© <span id="y"></span> Dušan Pudar</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+    <script src="script1.js"></script>
+  </body>
 </html>
