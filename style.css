@@ -1,13 +1,37 @@
-html,
-body {
+:root {
+  --accent: #7c5cfc;
+  --accent-light: #a78bfa;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.09);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.45);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: 'Dancing Script', cursive;
-  background: #0a0a0a;
-  color: #fff;
+  background: #080810;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-glow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 92, 252, 0.12) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 #particlesCanvas {
@@ -26,50 +50,120 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.center-content h1 {
-  font-size: clamp(2.5rem, 6vw, 6rem);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 24px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 52px 64px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.8rem, 6vw, 5rem);
   margin: 0;
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.divider {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 28px auto;
 }
 
 .socials {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
-.socials a {
+.social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.05rem;
   text-decoration: none;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
 }
 
-.socials a:hover {
-  transform: scale(1.2);
-  background: #1da1f2;
+.social-link:hover {
+  transform: translateY(-4px);
   color: #fff;
-  box-shadow: 0 0 10px #1da1f2;
+}
+
+.social-link.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.45);
+}
+
+.social-link.github:hover {
+  background: #24292e;
+  border-color: #444;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.social-link.twitter:hover {
+  background: #1da1f2;
+  border-color: #1da1f2;
+  box-shadow: 0 6px 20px rgba(29, 161, 242, 0.45);
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: #dc2743;
+  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
 }
 
 footer {
   position: absolute;
-  bottom: 10px;
+  bottom: 18px;
   width: 100%;
   text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 0.9rem;
-  color: #aaa;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.2);
   z-index: 1;
+  letter-spacing: 0.05em;
+}
+
+footer p {
+  margin: 0;
 }
