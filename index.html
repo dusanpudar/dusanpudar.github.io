@@ -22,7 +22,7 @@
     <meta property="og:image" content="https://www.pudar.me/img/favicon.png" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -32,42 +32,51 @@
     />
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png" />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="bg-glow"></div>
     <canvas id="particlesCanvas"></canvas>
 
     <main class="center-content">
-      <h1>Dušan Pudar</h1>
-      <nav class="socials" aria-label="Social Media Links">
-        <a
-          href="https://linkedin.com/in/dusanpudar"
-          target="_blank"
-          aria-label="LinkedIn Profile"
-          ><i class="fab fa-linkedin"></i
-        ></a>
-        <a
-          href="https://twitter.com/dusanpudar"
-          target="_blank"
-          aria-label="Twitter Profile"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a
-          href="https://instagram.com/dusanpudar"
-          target="_blank"
-          aria-label="Instagram Profile"
-          ><i class="fab fa-instagram"></i
-        ></a>
-      </nav>
+      <div class="card">
+        <h1>Dušan Pudar</h1>
+        <p class="subtitle">Web Developer</p>
+        <div class="divider"></div>
+        <nav class="socials" aria-label="Social Media Links">
+          <a
+            href="https://linkedin.com/in/dusanpudar"
+            target="_blank"
+            aria-label="LinkedIn Profile"
+            class="social-link linkedin"
+          ><i class="fab fa-linkedin-in"></i></a>
+          <a
+            href="https://github.com/dusanpudar"
+            target="_blank"
+            aria-label="GitHub Profile"
+            class="social-link github"
+          ><i class="fab fa-github"></i></a>
+          <a
+            href="https://twitter.com/dusanpudar"
+            target="_blank"
+            aria-label="Twitter Profile"
+            class="social-link twitter"
+          ><i class="fab fa-twitter"></i></a>
+          <a
+            href="https://instagram.com/dusanpudar"
+            target="_blank"
+            aria-label="Instagram Profile"
+            class="social-link instagram"
+          ><i class="fab fa-instagram"></i></a>
+        </nav>
+      </div>
     </main>
 
     <footer>
-      <i><p>© <span id="y"></span> Dušan Pudar</p></i>
+      <p>© <span id="y"></span> Dušan Pudar</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
-
