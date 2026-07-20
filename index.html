@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dušan Pudar</title>
+    <title>Dušan Pudar — Web Developer</title>
 
-    <!-- Meta SEO -->
     <meta
       name="description"
-      content="Portfolio Dušana Pudara – Web Developer, sa fokusom na moderne web sajtove, animacije i interaktivni dizajn."
+      content="Portfolio Dušana Pudara, web developera, trenutno je u izradi. Uskoro stiže novo izdanje sa projektima i detaljima."
     />
-    <meta name="keywords" content="Dušan Pudar, web developer, landing page" />
+    <meta name="keywords" content="Dušan Pudar, web developer, portfolio" />
     <meta name="author" content="Dušan Pudar" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="Dušan Pudar" />
-    <meta property="og:description" content="Dušan Pudar - Web Developer" />
+    <meta property="og:description" content="Web Developer — portfolio u izradi" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.pudar.me/" />
     <meta property="og:image" content="https://www.pudar.me/img/favicon.png" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -35,48 +35,66 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="bg-glow"></div>
-    <canvas id="particlesCanvas"></canvas>
+    <div class="backdrop">
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+      <div class="grid-overlay"></div>
+    </div>
 
-    <main class="center-content">
-      <div class="card">
+    <main class="wrap">
+      <section class="card">
+        <span class="status">
+          <span class="status-dot"></span>
+          U izradi
+        </span>
+
         <h1>Dušan Pudar</h1>
-        <p class="subtitle">Web Developer</p>
+        <p class="role">Web Developer</p>
+
+        <p class="message">
+          Radim na novom portfoliju. Uskoro stiže sa projektima
+          i svime ostalim — dotle, javi mi se ovde:
+        </p>
+
         <div class="divider"></div>
-        <nav class="socials" aria-label="Social Media Links">
+
+        <nav class="socials" aria-label="Društvene mreže">
           <a
             href="https://linkedin.com/in/dusanpudar"
             target="_blank"
-            aria-label="LinkedIn Profile"
-            class="social-link linkedin"
+            rel="noopener"
+            aria-label="LinkedIn profil"
+            class="social-link"
           ><i class="fab fa-linkedin-in"></i></a>
           <a
             href="https://github.com/dusanpudar"
             target="_blank"
-            aria-label="GitHub Profile"
-            class="social-link github"
+            rel="noopener"
+            aria-label="GitHub profil"
+            class="social-link"
           ><i class="fab fa-github"></i></a>
           <a
             href="https://twitter.com/dusanpudar"
             target="_blank"
-            aria-label="Twitter Profile"
-            class="social-link twitter"
+            rel="noopener"
+            aria-label="Twitter profil"
+            class="social-link"
           ><i class="fab fa-twitter"></i></a>
           <a
             href="https://instagram.com/dusanpudar"
             target="_blank"
-            aria-label="Instagram Profile"
-            class="social-link instagram"
+            rel="noopener"
+            aria-label="Instagram profil"
+            class="social-link"
           ><i class="fab fa-instagram"></i></a>
         </nav>
-      </div>
+      </section>
     </main>
 
     <footer>
-      <p>© <span id="y"></span> Dušan Pudar</p>
+      <p>© <span id="year"></span> Dušan Pudar</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

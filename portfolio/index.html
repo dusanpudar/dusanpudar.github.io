@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dušan Pudar — Portfolio</title>
+
+    <meta
+      name="description"
+      content="Portfolio Dušana Pudara — web developera fokusiranog na moderne, brze i pristupačne web sajtove i aplikacije."
+    />
+    <meta name="keywords" content="Dušan Pudar, web developer, portfolio, projekti" />
+    <meta name="author" content="Dušan Pudar" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="backdrop">
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <header class="nav">
+      <div class="nav-inner">
+        <a href="#top" class="logo">DP</a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#about">O meni</a>
+          <a href="#skills">Veštine</a>
+          <a href="#projects">Projekti</a>
+          <a href="#contact" class="nav-cta">Kontakt</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="top" class="hero">
+        <p class="eyebrow">Zdravo, ja sam</p>
+        <h1>Dušan Pudar</h1>
+        <p class="hero-role">Web Developer</p>
+        <p class="hero-text">
+          Gradim brze, pristupačne i lepo dizajnirane web sajtove i aplikacije —
+          od prve linije koda do finalnog piksela.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Pogledaj projekte</a>
+          <a href="#contact" class="btn btn-ghost">Kontakt</a>
+        </div>
+
+        <nav class="socials" aria-label="Društvene mreže">
+          <a href="https://linkedin.com/in/dusanpudar" target="_blank" rel="noopener" aria-label="LinkedIn profil" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/dusanpudar" target="_blank" rel="noopener" aria-label="GitHub profil" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/dusanpudar" target="_blank" rel="noopener" aria-label="Twitter profil" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/dusanpudar" target="_blank" rel="noopener" aria-label="Instagram profil" class="social-link"><i class="fab fa-instagram"></i></a>
+        </nav>
+      </section>
+
+      <section id="about" class="about">
+        <p class="section-label">O meni</p>
+        <h2>Ko sam ja</h2>
+
+        <div class="about-grid">
+          <p>
+            Zovem se Dušan Pudar i bavim se razvojem web sajtova i aplikacija.
+            Fokusiram se na to da spojim čist kod sa promišljenim dizajnom,
+            tako da svaki proizvod bude i funkcionalan i prijatan za korišćenje.
+          </p>
+          <p>
+            Van posla najviše volim da eksperimentišem sa novim tehnologijama,
+            unapređujem stvari koje već postoje i učim nešto novo iz nedelje u nedelju.
+          </p>
+        </div>
+
+        <ul class="about-facts">
+          <li><span>3+</span>godine iskustva</li>
+          <li><span>10+</span>završenih projekata</li>
+          <li><span>100%</span>posvećenosti detaljima</li>
+        </ul>
+      </section>
+
+      <section id="skills" class="skills">
+        <p class="section-label">Veštine</p>
+        <h2>Čime se bavim</h2>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML5 &amp; CSS3</li>
+              <li>JavaScript</li>
+              <li>React</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>REST API</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Alati</h3>
+            <ul>
+              <li>Git &amp; GitHub</li>
+              <li>Figma</li>
+              <li>Docker</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <p class="section-label">Projekti</p>
+        <h2>Šta sam radio</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-icon"><i class="fa-solid fa-cart-shopping"></i></span>
+              <div class="project-links">
+                <a href="#" aria-label="GitHub repozitorijum"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Pogledaj uživo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+            <h3>E-commerce Platforma</h3>
+            <p>Online prodavnica sa korpom, plaćanjem i admin panelom za upravljanje proizvodima.</p>
+            <ul class="tags">
+              <li>React</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-icon"><i class="fa-solid fa-list-check"></i></span>
+              <div class="project-links">
+                <a href="#" aria-label="GitHub repozitorijum"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Pogledaj uživo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+            <h3>Task Manager App</h3>
+            <p>Aplikacija za organizaciju zadataka sa timovima, rokovima i praćenjem napretka.</p>
+            <ul class="tags">
+              <li>Vue</li>
+              <li>Express</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="project-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              <div class="project-links">
+                <a href="#" aria-label="GitHub repozitorijum"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Pogledaj uživo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+            <h3>Portfolio Generator</h3>
+            <p>Alat koji iz jednog JSON fajla generiše statičan portfolio sajt spreman za objavu.</p>
+            <ul class="tags">
+              <li>JavaScript</li>
+              <li>Vite</li>
+              <li>CSS</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <p class="section-label">Kontakt</p>
+        <h2>Pišimo se</h2>
+        <p class="contact-text">
+          Imaš ideju za projekat ili samo želiš da se pozdraviš? Slobodno mi piši.
+        </p>
+
+        <a href="mailto:kontakt@pudar.me" class="btn btn-primary">kontakt@pudar.me</a>
+
+        <nav class="socials" aria-label="Društvene mreže">
+          <a href="https://linkedin.com/in/dusanpudar" target="_blank" rel="noopener" aria-label="LinkedIn profil" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/dusanpudar" target="_blank" rel="noopener" aria-label="GitHub profil" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/dusanpudar" target="_blank" rel="noopener" aria-label="Twitter profil" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com/dusanpudar" target="_blank" rel="noopener" aria-label="Instagram profil" class="social-link"><i class="fab fa-instagram"></i></a>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Dušan Pudar</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
