@@ -3,172 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dušan Pudar — Portfolio</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Dušan Pudar — Junior Web Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- SEO Meta Tagovi -->
+    <meta name="description" content="Dušan Pudar - Junior Web Developer">
+    <meta name="author" content="Dušan Pudar">
+    
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <!-- FontAwesome za ikonice -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
-
-    <!-- Navigacija -->
-    <header class="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">Portfolio<span>.</span></a>
-            <ul class="nav-menu">
-                <li><a href="#home">Početna</a></li>
-                <li><a href="#about">O meni</a></li>
-                <li><a href="#skills">Veštine</a></li>
-                <li><a href="#projects">Projekti</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-            <a href="#contact" class="btn btn-accent">Zaposli me</a>
-        </div>
-    </header>
-
-    <!-- Početna sekcija (Hero) -->
-    <section id="home" class="hero section">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="social-links">
-                    <a href="https://github.com/dusanpudar" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-                <h1>Zdravo, ja sam <span class="zeleno">Dušan Pudar</span></h1>
-                <p>Programer sa iskustvom u izradi modernih web sajtova, aplikacija i rešenja. Fokusiran na čist kod i kvalitetan dizajn.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-download"></i> Preuzmi CV</a>
-                    <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Kontaktiraj me</a>
-                </div>
-            </div>
-            <div class="hero-image-box">
-                <div class="floating-badge badge-top"><i class="fa-solid fa-code"></i> Web Dev</div>
-                <div class="floating-badge badge-bottom"><i class="fa-solid fa-server"></i> Linux & PHP</div>
-                <img src="img/favicon.png" alt="Dušan Pudar" class="profile-img">
-            </div>
-        </div>
-    </section>
-
-    <!-- O meni sekcija -->
-    <section id="about" class="about section">
-        <div class="container about-grid">
-            <div class="about-card-left">
-                <div class="code-box">
-                    <code>
-                        // Dušan Pudar<br>
-                        $profesija = "Programer";<br>
-                        $oblast = "Web & Serveri";
-                    </code>
-                </div>
-            </div>
-            <div class="about-text">
-                <h2>O <span class="zeleno">meni</span></h2>
-                <p>Strastveni sam programer koji uživa u rešavanju problema, kreiranju web platformi i radu sa serverima. Kroz sopstvene projekte i školovanje svakodnevno proširujem svoje znanje.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>2+</h3>
-                        <p>Fakultet</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>3+</h3>
-                        <p>Iskustvo</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>20+</h3>
-                        <p>Projekata</p>
-                    </div>
-                </div>
-
-                <a href="#contact" class="btn btn-primary">Saznaj više</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Veštine sekcija -->
-    <section id="skills" class="skills section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Moje <span class="zeleno">veštine</span></h2>
-                <p>Tehnologije koje koristim u radu</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-box"><i class="fa-brands fa-html5"></i><span>HTML / CSS</span></div>
-                <div class="skill-box"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-                <div class="skill-box"><i class="fa-brands fa-php"></i><span>PHP</span></div>
-                <div class="skill-box"><i class="fa-brands fa-linux"></i><span>Linux & Ubuntu</span></div>
-                <div class="skill-box"><i class="fa-solid fa-server"></i><span>Self-Hosting</span></div>
-                <div class="skill-box"><i class="fa-brands fa-git-alt"></i><span>Git & GitHub</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projekti sekcija -->
-    <section id="projects" class="projects section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Izdvojeni <span class="zeleno">projekti</span></h2>
-                <p>Neki od zapaženijih projekata koje sam razvio</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>e_pozivnica.rs</h3>
-                    <p>Moderna platforma za izradu i uređivanje digitalnih pozivnica sa lepim korisničkim interfejsom.</p>
-                    <a href="https://e-pozivnica.rs" target="_blank" class="project-link">Poseti sajt <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="project-card">
-                    <h3>Mini Expense Tracker</h3>
-                    <p>Privatna aplikacija za praćenje troškova povezana sa Telegram botom za brzu evidenciju.</p>
-                    <span class="tag">Self-Hosted</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontakt sekcija -->
-    <section id="contact" class="contact section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Stupi u <span class="zeleno">kontakt</span></h2>
-                <p>Imaš projekat na umu? Piši mi.</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <i class="fa-solid fa-paper-plane contact-big-icon"></i>
-                    <h3>Piši mi direktno</h3>
-                    <p>Uvek sam otvoren za nove ideje, saradnju i izazove. Odgovaram u najkraćem roku.</p>
-                </div>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Poruka je uspešno poslata!');">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Ime</label>
-                            <input type="text" placeholder="Vaše ime" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Prezime</label>
-                            <input type="text" placeholder="Vaše prezime" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email adresa</label>
-                        <input type="email" placeholder="vas@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Poruka</label>
-                        <textarea rows="4" placeholder="Napišite poruku..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary submit-btn">Pošalji poruku</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Futer -->
-    <footer class="footer">
-        <p>&copy; 2026 Dušan Pudar (pudar.me). Sva prava zadržana.</p>
-    </footer>
-
+    <div class="container">
+        <h1>Dušan Pudar</h1>
+        <p class="blink-text">Junior Web Developer</p>
+    </div>
 </body>
 </html>
