@@ -1,26 +1,30 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #022c1f;
+}
+
+body {
     color: #34d399;
     font-family: 'Plus Jakarta Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     text-align: center;
-    padding: 20px;
 }
 
 .container {
     max-width: 700px;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
 }
 
 h1 {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 0 0 12px 0;
     letter-spacing: -0.5px;
     color: #ffffff;
 }
@@ -30,6 +34,7 @@ p.blink-text {
     color: #34d399;
     font-weight: 400;
     letter-spacing: 0.5px;
+    margin: 0;
     animation: blinkEffect 1.8s infinite ease-in-out;
 }
 
