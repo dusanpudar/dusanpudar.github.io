@@ -38,10 +38,39 @@ p.blink-text {
     animation: blinkEffect 1.8s infinite ease-in-out;
 }
 
-.linkedin-badge {
-    margin-top: 32px;
+.links {
+    margin-top: 36px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    border-radius: 10px;
+    color: #34d399;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.links a svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+}
+
+.links a:hover {
+    color: #ffffff;
+    border-color: rgba(52, 211, 153, 0.65);
+    background-color: rgba(52, 211, 153, 0.1);
 }
 
 @keyframes blinkEffect {
