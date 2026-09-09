@@ -51,7 +51,6 @@ p.blink-text {
     align-items: center;
     gap: 8px;
     padding: 10px 18px;
-    border: 1px solid rgba(52, 211, 153, 0.3);
     border-radius: 10px;
     color: #34d399;
     font-size: 0.95rem;
@@ -69,7 +68,6 @@ p.blink-text {
 
 .links a:hover {
     color: #ffffff;
-    border-color: rgba(52, 211, 153, 0.65);
     background-color: rgba(52, 211, 153, 0.1);
 }
 
