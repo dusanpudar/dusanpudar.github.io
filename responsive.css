@@ -1,4 +1,3 @@
-/* Prilagođavanje za tablete i manje laptope (ispod 968px) */
 @media (max-width: 968px) {
     .hero-grid {
         grid-template-columns: 1fr;
@@ -20,11 +19,10 @@
     }
 
     .nav-menu {
-        display: none; /* Sakriveno meniju na manjim ekranima radi preglednosti */
+        display: none; 
     }
 }
 
-/* Prilagođavanje za mobilne telefone (ispod 576px) */
 @media (max-width: 576px) {
     .hero-content h1 {
         font-size: 32px;
