@@ -38,8 +38,53 @@ p.blink-text {
     animation: blinkEffect 1.8s infinite ease-in-out;
 }
 
+/* Timer */
+.timer {
+    margin: 52px auto 0;
+    max-width: 440px;
+}
+
+.timer-title {
+    margin: 0 0 24px 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #34d399;
+}
+
+.timer-clock {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: clamp(12px, 6vw, 38px);
+}
+
+.timer-clock > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.timer-clock span {
+    font-size: clamp(1.9rem, 9vw, 3rem);
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-clock small {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: lowercase;
+    color: rgba(52, 211, 153, 0.7);
+}
+
+/* Links */
 .links {
-    margin-top: 36px;
+    margin-top: 52px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -48,27 +93,25 @@ p.blink-text {
 
 .links a {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 10px;
     color: #34d399;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
     text-decoration: none;
-    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    transition: color 0.25s ease;
 }
 
 .links a svg {
-    width: 17px;
-    height: 17px;
+    width: 22px;
+    height: 22px;
     fill: currentColor;
 }
 
 .links a:hover {
     color: #ffffff;
-    background-color: rgba(52, 211, 153, 0.1);
+}
+
+.links a:focus-visible {
+    outline: 2px solid #34d399;
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 @keyframes blinkEffect {
@@ -77,5 +120,11 @@ p.blink-text {
     }
     50% {
         opacity: 0.3;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    p.blink-text {
+        animation: none;
     }
 }
