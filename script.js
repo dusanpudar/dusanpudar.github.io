@@ -1,5 +1,5 @@
 // Portfolio launch date and time (local time, 24h format).
-const LAUNCH_DATE = "2026-09-14T09:00:00";
+const LAUNCH_DATE = "2026-09-18T09:00:00";
 
 
 (function () {
