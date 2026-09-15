@@ -212,6 +212,13 @@ function initContactForm() {
   const form = document.getElementById("contactForm");
   const submitBtn = form.querySelector(".form-submit");
   const submitLabel = form.querySelector(".form-submit-label");
+  const successCard = document.getElementById("formSuccess");
+  const resetBtn = document.getElementById("formSuccessReset");
+
+  resetBtn.addEventListener("click", () => {
+    successCard.hidden = true;
+    form.hidden = false;
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -223,8 +230,7 @@ function initContactForm() {
 
     // Honeypot: real visitors never fill this field
     if (form.website.value.trim() !== "") {
-      showToast("Thanks! Your message has been sent.", "success");
-      form.reset();
+      showFormSuccess(form, successCard);
       return;
     }
 
@@ -247,8 +253,7 @@ function initContactForm() {
         body: formData,
         mode: "no-cors",
       });
-      showToast("Thanks! Your message has been sent.", "success");
-      form.reset();
+      showFormSuccess(form, successCard);
     } catch (error) {
       showToast("Something went wrong. Please try again later.", "error");
     } finally {
@@ -256,6 +261,12 @@ function initContactForm() {
       submitLabel.textContent = "Send message";
     }
   });
+}
+
+function showFormSuccess(form, successCard) {
+  form.reset();
+  form.hidden = true;
+  successCard.hidden = false;
 }
 
 let toastTimer = null;

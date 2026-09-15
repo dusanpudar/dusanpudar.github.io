@@ -863,6 +863,10 @@ button {
   gap: 16px;
 }
 
+.contact-form[hidden] {
+  display: none;
+}
+
 .form-row {
   display: flex;
   flex-direction: column;
@@ -915,6 +919,52 @@ button {
 
 .form-recaptcha-note a {
   color: var(--text-secondary);
+}
+
+.form-success {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.form-success[hidden] {
+  display: none;
+}
+
+.form-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 0 18px;
+}
+
+.form-success-eyebrow {
+  font-family: var(--mono);
+  color: var(--accent-light);
+  font-size: 12px;
+  margin: 0 0 8px;
+}
+
+.form-success h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+.form-success p {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  max-width: 320px;
+  margin: 0 0 22px;
 }
 
 .toast[hidden] {
