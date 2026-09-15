@@ -295,8 +295,8 @@ button {
    ========================================================================== */
 
 .hero {
+  position: relative;
   padding: 72px 0 64px;
-  border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
@@ -435,12 +435,29 @@ button {
   font-weight: 800;
 }
 
+.section-wave {
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 54px;
+}
+
+.section-wave--to-alt path {
+  fill: var(--bg-alt);
+}
+
+.section-wave--to-base path {
+  fill: var(--bg);
+}
+
 /* About
    ========================================================================== */
 
 .about {
+  position: relative;
   background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
 }
 
 .about-inner {
@@ -522,6 +539,7 @@ button {
   position: relative;
   padding-left: 22px;
   border-left: 1px solid var(--border);
+  transition: border-color 1.1s ease;
 }
 
 .timeline-item::before {
@@ -532,7 +550,18 @@ button {
   width: 9px;
   height: 9px;
   border-radius: 50%;
+  background: var(--text-muted);
+  transition: background 1s ease, transform 1s ease, box-shadow 1s ease;
+}
+
+.timeline-item.is-active {
+  border-left-color: var(--accent);
+}
+
+.timeline-item.is-active::before {
   background: var(--accent);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px var(--surface-soft);
 }
 
 .timeline-date {
@@ -589,6 +618,10 @@ button {
 /* Skills
    ========================================================================== */
 
+.skills {
+  position: relative;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -630,8 +663,8 @@ button {
    ========================================================================== */
 
 .projects {
+  position: relative;
   background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
 }
 
 .projects-head {

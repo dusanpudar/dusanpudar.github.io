@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initHeaderShadow();
   initScrollReveal();
+  initTimelineScroll();
   initImageProtection();
   initProjectsCarousel();
   initCvModal();
@@ -115,6 +116,26 @@ function initScrollReveal() {
   );
 
   revealEls.forEach((el) => observer.observe(el));
+}
+
+// Lights up each timeline dot/line as it scrolls into view
+function initTimelineScroll() {
+  const items = document.querySelectorAll(".timeline-item");
+  if (!("IntersectionObserver" in window) || !items.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-active");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  items.forEach((item) => observer.observe(item));
 }
 
 // Best-effort deterrent against casual image saving
