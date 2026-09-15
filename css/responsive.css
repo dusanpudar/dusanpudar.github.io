@@ -9,6 +9,10 @@
     min-height: 76px;
   }
 
+  .project-disclaimer {
+    min-height: 44px;
+  }
+
   .contact-inner {
     gap: 40px;
   }
@@ -50,6 +54,21 @@
 
   .header-actions .btn-sm {
     display: none;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .skills-cell {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .skills-cell-values {
+    text-align: left;
   }
 
   .contact-inner {
@@ -143,6 +162,10 @@
 
   .project-tech {
     min-height: 144px;
+  }
+
+  .project-disclaimer {
+    min-height: 76px;
   }
 
   .contact-inner {

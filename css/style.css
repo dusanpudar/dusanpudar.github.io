@@ -387,12 +387,21 @@ button {
 .hero-social .social-row {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
+  border-radius: 999px;
+  padding: 8px;
+  gap: 6px;
 }
 
 .hero-social .social-row a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   border-color: transparent;
+  font-size: 18px;
+}
+
+.hero-social .social-row a:hover {
+  background: var(--surface-soft);
 }
 
 /* Shared section layout
@@ -571,40 +580,41 @@ button {
 /* Skills
    ========================================================================== */
 
-.skills-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 48px;
   margin-top: 28px;
 }
 
-.skills-group-label {
+.skills-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skills-cell-label {
+  flex: 0 0 auto;
   font-family: var(--mono);
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin: 0 0 12px;
+  margin: 0;
+  white-space: nowrap;
 }
 
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skill-tag {
+.skills-cell-values {
   font-family: var(--mono);
-  font-size: 13px;
-  color: var(--text-secondary);
-  padding: 9px 16px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.skill-tag:hover {
+  font-size: 12.5px;
+  line-height: 1.6;
   color: var(--accent-light);
-  border-color: var(--border-strong);
+  text-align: right;
+  margin: 0;
 }
 
 /* Projects
@@ -771,6 +781,17 @@ button {
   border-radius: var(--radius-sm);
 }
 
+.project-disclaimer {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 10.5px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted);
+  min-height: 60px;
+}
+
 /* Contact
    ========================================================================== */
 
@@ -903,22 +924,20 @@ button {
   z-index: 200;
   left: 24px;
   bottom: 24px;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: 50%;
-  color: var(--text-primary);
-  font-size: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13px;
   cursor: pointer;
-  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
-  transform: translateY(12px);
+  transform: translateY(8px);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.25s ease, opacity 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.25s ease, color 0.2s ease;
 }
 
 .back-to-top[hidden] {
@@ -932,9 +951,7 @@ button {
 }
 
 .back-to-top:hover {
-  background: var(--accent);
-  color: #05170f;
-  border-color: var(--accent);
+  color: var(--accent-light);
 }
 
 /* CV preview modal
