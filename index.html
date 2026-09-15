@@ -1,47 +1,854 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dušan Pudar — Web / Frontend Developer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dusan Pudar — Web / Frontend Developer | iGaming | PHP • JavaScript • WordPress • CMS | Multi-Market & Multilingual Platforms | Master's Student</title>
+  <meta name="description" content="Web / Frontend Developer building multilingual, production-ready websites and promotional platforms — including large-scale iGaming work with PHP, JavaScript and WordPress.">
+  <meta name="theme-color" content="#10b981">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://pudar.me/">
 
-    <!-- SEO Meta Tagovi -->
-    <meta name="description" content="Dušan Pudar - Web / Frontend Developer">
-    <meta name="author" content="Dušan Pudar">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dusan Pudar — Web / Frontend Developer">
+  <meta property="og:description" content="Web / Frontend Developer building multilingual, production-ready websites and promotional platforms — including large-scale iGaming work with PHP, JavaScript and WordPress.">
+  <meta property="og:url" content="https://pudar.me/">
+  <meta property="og:image" content="https://pudar.me/assets/img/logo-view.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dusan Pudar — Web / Frontend Developer">
+  <meta name="twitter:description" content="Web / Frontend Developer building multilingual, production-ready websites and promotional platforms — including large-scale iGaming work with PHP, JavaScript and WordPress.">
+  <meta name="twitter:image" content="https://pudar.me/assets/img/logo-view.png">
+
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Replace with your own reCAPTCHA v3 site key -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcBBL0tAAAAAIUOhda9Aaz7-fOTONDZQJ_iL9gu"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dusan Pudar",
+    "jobTitle": "Web / Frontend Developer",
+    "url": "https://pudar.me/",
+    "image": "https://pudar.me/assets/img/logo-view.png",
+    "sameAs": [
+      "https://github.com/dusanpudar",
+      "https://www.linkedin.com/in/dusanpudar/",
+      "https://www.instagram.com/dusanpudar",
+      "https://www.facebook.com/pudardusan"
+    ]
+  }
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Dušan Pudar</h1>
-        <p class="blink-text">Web / Frontend Developer</p>
 
-        <div class="timer">
-            <p class="timer-title">Portfolio will be available in</p>
-            <div class="timer-clock" aria-live="polite">
-                <div><span id="days">00</span><small>days</small></div>
-                <div><span id="hours">00</span><small>hours</small></div>
-                <div><span id="minutes">00</span><small>min</small></div>
-                <div><span id="seconds">00</span><small>sec</small></div>
-            </div>
+  <header class="site-header" id="site-header">
+    <div class="wrapper header-bar">
+      <a href="#home" class="logo" data-scroll>
+        <img src="assets/img/logo.png" alt="Dusan Pudar logo">
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul>
+          <li><a href="#home" data-scroll>Home</a></li>
+          <li><a href="#about" data-scroll>About</a></li>
+          <li><a href="#experience" data-scroll>Experience</a></li>
+          <li><a href="#skills" data-scroll>Skills</a></li>
+          <li><a href="#projects" data-scroll>Projects</a></li>
+          <li><a href="#contact" data-scroll>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-primary btn-sm" data-scroll>Get in touch</a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Landing -->
+    <section class="hero" id="home">
+      <div class="wrapper hero-inner">
+        <div class="hero-text reveal">
+          <p class="eyebrow">// web / frontend developer</p>
+          <h1>Dusan Pudar</h1>
+          <p class="hero-tagline">iGaming · PHP · JavaScript · WordPress · CMS · Multi-Market & Multilingual Platforms · Master's Student</p>
+          <p class="hero-desc">
+            I build production-ready websites and promotional platforms for multilingual,
+            multi-market audiences — from large-scale iGaming campaigns to custom sites built
+            with PHP, JavaScript and WordPress, always shipping clean, well-documented code.
+          </p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-outline" data-cv-open>Preview CV</button>
+            <a href="#projects" class="btn btn-ghost" data-scroll>View projects</a>
+          </div>
         </div>
 
-        <nav class="links">
-            <a href="https://rs.linkedin.com/in/dusanpudar" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.24zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-                </svg>
-            </a>
-        </nav>
-    </div>
+        <div class="hero-visual reveal">
+          <div class="hero-image">
+            <img src="assets/img/caricature.png" alt="Dusan Pudar" draggable="false">
+          </div>
 
-    <script src="script.js"></script>
+          <div class="hero-social">
+            <ul class="social-row" aria-label="Social links">
+              <li>
+                <a href="https://github.com/dusanpudar" target="_blank" rel="noopener" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/dusanpudar/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/dusanpudar" target="_blank" rel="noopener" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/pudardusan" target="_blank" rel="noopener" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:dusan@pudar.me" aria-label="Email">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="wrapper about-inner">
+        <div class="about-image reveal">
+          <div class="about-shape about-shape-1"></div>
+          <div class="about-shape about-shape-2"></div>
+          <div class="about-image-card"></div>
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/img/caricature-mobile.png">
+            <img src="assets/img/caricature-desktop.png" alt="Dusan Pudar illustration" draggable="false">
+          </picture>
+        </div>
+
+        <div class="about-content reveal">
+          <p class="section-label">About</p>
+          <h2>A bit about me</h2>
+          <p class="section-text">
+            Web / Frontend Developer with hands-on experience building multilingual,
+            production-ready websites and promotional platforms — including large-scale work
+            in the iGaming industry — writing clean, well-documented PHP and JavaScript,
+            paired with responsive HTML/CSS builds, and WordPress sites developed from scratch
+            using Advanced Custom Fields (ACF). Comfortable owning a project end-to-end:
+            converting designs into pixel-perfect front-end code and deploying through CI/CD
+            pipelines across multiple markets and languages simultaneously.
+          </p>
+          <p class="section-text">
+            At Sportserve (Sportion), I resolved 200+ development and support tickets while
+            consistently delivering on time, and contributed to systems used across 300+ live
+            pages.
+          </p>
+          <p class="section-text">
+            Currently completing a Master's in Computer Engineering, alongside a Bachelor's in
+            the same field. Open to remote, hybrid, or on-site roles across any industry.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section class="experience" id="experience">
+      <div class="wrapper reveal">
+        <p class="section-label">Experience</p>
+        <h2>Where I've worked</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-date">Jun 2025 – Sept 2026</p>
+            <h3 class="timeline-title">Junior Web Developer <span class="timeline-company">· Sportserve (Sportion), Belgrade</span></h3>
+            <ul class="timeline-bullets">
+              <li>Wrote clean, efficient, well-documented code in PHP and JavaScript, alongside HTML and CSS, ensuring cross-browser compatibility and responsive design across all projects.</li>
+              <li>Converted PSD designs into responsive, pixel-perfect HTML and built out corresponding front-end functionality.</li>
+              <li>Built and maintained landing pages, satellite pages, and promotional campaigns, including a shared header/footer template system used across 300+ pages.</li>
+              <li>Developed WordPress sites from scratch using Advanced Custom Fields (ACF), as well as custom websites and microsites based on client technical and functional specifications.</li>
+              <li>Created and managed promotional banners using Bannerflow.</li>
+              <li>Resolved 200+ support and development tickets to date, consistently delivering on time and maintaining a high standard of quality.</li>
+              <li>Collaborated closely with the team on creative and technical problem-solving.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">Mar 2025 – Jun 2025</p>
+            <h3 class="timeline-title">Junior Web Developer Trainee <span class="timeline-company">· Sportserve (Sportion), Belgrade</span></h3>
+            <p class="timeline-desc">3-month onboarding period building trainee/practice websites to develop core front-end and WordPress skills before moving into full client project work.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">Aug 2024 – Mar 2025</p>
+            <h3 class="timeline-title">Junior Web Developer <span class="timeline-company">· Kliker IT Centar za decu, Belgrade</span></h3>
+            <ul class="timeline-bullets">
+              <li>Built and maintained WordPress websites for the franchise's regional presence, including new language versions for Montenegrin, Bosnian, Slovenian, and Macedonian markets, alongside ongoing maintenance of the Serbian site.</li>
+              <li>Designed and implemented Make (Integromat) automations to handle online course applications end-to-end.</li>
+              <li>Built an admin dashboard for staff with automated certificate/diploma generation.</li>
+              <li>Created marketing campaigns in Canva and supported promotion across social media and web channels.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">Oct 2023 – Jan 2024</p>
+            <h3 class="timeline-title">Intern Junior Frontend Developer <span class="timeline-company">· Contrimo GmbH, Belgrade</span></h3>
+            <ul class="timeline-bullets">
+              <li>Contributed to the development of a web application using HTML, CSS, JavaScript, and the KnockoutJS library, working within an established enterprise codebase.</li>
+              <li>Implemented and maintained UI components, translating design requirements into functional, data-bound frontend views.</li>
+              <li>Collaborated with senior developers to understand and follow existing architecture and coding conventions within a 3-month internship period.</li>
+              <li>Gained hands-on experience with component-based frontend development in a professional, production-oriented environment.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">May 2019 – Sept 2021</p>
+            <h3 class="timeline-title">Freelance Graphic & Web Designer <span class="timeline-company">· Godzilla Design, Bileca, BiH</span></h3>
+            <ul class="timeline-bullets">
+              <li>Independently designed and developed websites and digital solutions from concept through final implementation.</li>
+              <li>Created website layouts, designed visual assets, and performed photo manipulation for client projects.</li>
+              <li>Built custom websites based on individual project requirements, managing each project independently from planning to delivery.</li>
+              <li>Gained hands-on experience with frontend technologies, content management systems, and client-oriented solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="section-label timeline-divider">Education</p>
+        <h2>Academic background</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-date">Oct 2024 – Present</p>
+            <h3 class="timeline-title">MASc, Computer Engineering <span class="timeline-company">· School of Electrical and Computer Engineering of Applied Studies, Belgrade</span></h3>
+            <p class="timeline-desc">Thesis on a Big Data system for collecting, storing and visualizing sports data.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">Oct 2021 – Oct 2024</p>
+            <h3 class="timeline-title">BASc, Computer Engineering <span class="timeline-company">· School of Electrical and Computer Engineering of Applied Studies, Belgrade</span></h3>
+            <p class="timeline-desc">Focused on software development and modern web technologies — programming, web application development, databases and information systems.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-date">Sept 2017 – Jun 2021</p>
+            <h3 class="timeline-title">High School <span class="timeline-company">· SSC Golub Kures, Bileca, BiH</span></h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+      <div class="wrapper reveal">
+        <p class="section-label">Skills</p>
+        <h2>Technologies I work with</h2>
+
+        <div class="skills-groups">
+          <div class="skills-group">
+            <p class="skills-group-label">Languages</p>
+            <ul class="skills-list">
+              <li class="skill-tag">PHP</li>
+              <li class="skill-tag">JavaScript</li>
+              <li class="skill-tag">SQL</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <p class="skills-group-label">Front-end</p>
+            <ul class="skills-list">
+              <li class="skill-tag">HTML5</li>
+              <li class="skill-tag">CSS3</li>
+              <li class="skill-tag">CSS Flexbox</li>
+              <li class="skill-tag">jQuery</li>
+              <li class="skill-tag">Bootstrap</li>
+              <li class="skill-tag">KnockoutJS</li>
+              <li class="skill-tag">Chart.js</li>
+              <li class="skill-tag">Responsive Web Design</li>
+              <li class="skill-tag">Cross-Browser Testing</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <p class="skills-group-label">Back-end & CMS</p>
+            <ul class="skills-list">
+              <li class="skill-tag">WordPress</li>
+              <li class="skill-tag">Advanced Custom Fields</li>
+              <li class="skill-tag">Elementor</li>
+              <li class="skill-tag">CMS</li>
+              <li class="skill-tag">MySQL</li>
+              <li class="skill-tag">MongoDB</li>
+              <li class="skill-tag">REST APIs</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <p class="skills-group-label">Tools & workflow</p>
+            <ul class="skills-list">
+              <li class="skill-tag">Git / GitLab</li>
+              <li class="skill-tag">CI/CD</li>
+              <li class="skill-tag">Jira</li>
+              <li class="skill-tag">Confluence</li>
+              <li class="skill-tag">Slack</li>
+              <li class="skill-tag">Make</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <p class="skills-group-label">Design & practices</p>
+            <ul class="skills-list">
+              <li class="skill-tag">SEO Optimization</li>
+              <li class="skill-tag">Debugging & Troubleshooting</li>
+              <li class="skill-tag">Web Design</li>
+              <li class="skill-tag">Canva</li>
+              <li class="skill-tag">Adobe Photoshop</li>
+              <li class="skill-tag">Figma</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects">
+      <div class="wrapper reveal">
+        <div class="projects-head">
+          <div>
+            <p class="section-label">Projects</p>
+            <h2>Selected work</h2>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" class="carousel-btn" data-dir="1" aria-label="Next project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="projects-carousel">
+          <div class="projects-track" id="projectsTrack">
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/celtic.jpg" alt="Celtic FC Prediction Challenge" draggable="false">
+                <a href="https://www.dafaleague.com/2026/celtic-predict-and-win/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://www.dafaleague.com/2026/celtic-predict-and-win/en/" target="_blank" rel="noopener">Dafabet — Celtic FC Prediction Challenge</a></h3>
+                <p class="project-desc">Weekly match-prediction campaign run all season — refactored from 44 to ~19 files with a centralized PHP template system and a CI/CD pipeline with cache-busting banner rendering.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CMS</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/wc.jpg" alt="DafaMillion Cup 2026 Prediction Game" draggable="false">
+                <a href="https://www.dafaleague.com/dafamillion-cup-2026/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://www.dafaleague.com/dafamillion-cup-2026/en/" target="_blank" rel="noopener">Dafabet — DafaMillion Cup 2026 Prediction Game</a></h3>
+                <p class="project-desc">Multi-language World Cup prediction game with a drag-and-drop bracket flow from the Group Stage to the Final, backed by a live countdown timer.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CMS</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/seo.jpg" alt="SEO & WordPress Content Operations" draggable="false">
+              </div>
+              <div class="project-body">
+                <h3 class="project-name">Dafabet — SEO & WordPress Content Operations</h3>
+                <p class="project-desc">Go-to WordPress/SEO developer across multiple high-traffic sites — custom ACF fields, internal-linking and redirect fixes, reusable FAQ/Read-More UI patterns, and weekly plugin maintenance.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">WordPress</span>
+                  <span class="tech-tag">ACF</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                  <span class="tech-tag">Jira</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/footer.jpg" alt="Shared Header/Footer Template System" draggable="false">
+              </div>
+              <div class="project-body">
+                <h3 class="project-name">Dafabet — Shared Header/Footer Template System</h3>
+                <p class="project-desc">Centralized header/footer template powering 300+ live landing pages, with timestamp-versioned sponsor logos and a single GitLab commit deploying updates network-wide.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                  <span class="tech-tag">Confluence</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/sport.jpg" alt="EPL Sports Promo Landing Pages" draggable="false">
+                <a href="https://cmkt.dafapromo.com/sport/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://cmkt.dafapromo.com/sport/en/" target="_blank" rel="noopener">Dafabet — EPL Sports Promo Landing Pages (multi-market)</a></h3>
+                <p class="project-desc">Multi-language EPL betting promo across 10 markets, with a USP icon section, CTA logic, and a trust footer with localized payment-method logos per market.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/epl.jpg" alt="EPL Freebet Registration Landing Page" draggable="false">
+                <a href="https://cmkt.dafapromo.com/epl/reg/freebet/in/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://cmkt.dafapromo.com/epl/reg/freebet/in/" target="_blank" rel="noopener">Dafabet — EPL Freebet Registration (Indian market)</a></h3>
+                <p class="project-desc">Celtic FC-themed freebet landing page with a shared fast-registration component, automatic country/currency defaults, and a scrollable Terms & Conditions modal.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/fire-horse.jpg" alt="Year of the Fire Horse campaign" draggable="false">
+                <a href="https://www.dafaleague.com/2026/year-of-the-fire-horse/th/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://www.dafaleague.com/2026/year-of-the-fire-horse/th/" target="_blank" rel="noopener">Dafabet — Year of the Fire Horse (CNY campaign)</a></h3>
+                <p class="project-desc">Chinese New Year promo for the Thai market with a username entry form, loading-state feedback, and How It Works / Winners / Terms lightbox overlays.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CMS</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/kbo.jpg" alt="KBO Promo Landing Page" draggable="false">
+                <a href="https://cmkt.dafapromo.com/kbo/kr/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://cmkt.dafapromo.com/kbo/kr/" target="_blank" rel="noopener">Dafabet — KBO Promo Landing Page (Korean market)</a></h3>
+                <p class="project-desc">Single-market KBO season promo built on the shared header/footer template system, with a How It Works step section and hero CTA logic.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                  <span class="tech-tag">Jira</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/maha.jpg" alt="Maha Songkran Fest campaign" draggable="false">
+                <a href="https://www.dafaleague.com/2026/maha-songkran-fest/th/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://www.dafaleague.com/2026/maha-songkran-fest/th/" target="_blank" rel="noopener">Dafabet — Maha Songkran Fest (Thailand market)</a></h3>
+                <p class="project-desc">Thai Songkran festival promo with an animated entry form, a live table of past winners, and decorative floating-bubble animations.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CMS</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/nba.jpg" alt="NBA Playoffs Bracket Championship" draggable="false">
+                <a href="https://www.dafaleague.com/2026/playoffs-bracket-championship/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://www.dafaleague.com/2026/playoffs-bracket-championship/en/" target="_blank" rel="noopener">Dafabet — NBA Playoffs Bracket Championship</a></h3>
+                <p class="project-desc">Bracket-style prediction game from Round 1 to the Finals, with multi-language templates, a live countdown timer, and per-matchup score-picker interactions.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CMS</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/dafaonlinegames.jpg" alt="DafaOnlineGames platform" draggable="false">
+                <a href="https://dafaonlinegames.com/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://dafaonlinegames.com/" target="_blank" rel="noopener">Dafabet — DafaOnlineGames</a></h3>
+                <p class="project-desc">Mobile-responsive WordPress promo platform built from provided designs, with ongoing banner scripting and content maintenance.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">WordPress</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/ipl.jpg" alt="IPL Jackpot Campaign" draggable="false">
+                <a href="https://cmkt.dafapromo.com/IPL/pk/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://cmkt.dafapromo.com/IPL/pk/" target="_blank" rel="noopener">Dafabet — IPL Jackpot Campaign (multi-market)</a></h3>
+                <p class="project-desc">Multi-language IPL cricket promo for India, Pakistan and Bangladesh with a rotating headline slider and per-market translation files.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">GitLab</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/year-lucky.jpg" alt="Year-End Lucky Draw campaign" draggable="false">
+                <a href="https://dev.dafaleague.com/dusan/year-end-lucky-draw/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://dev.dafaleague.com/dusan/year-end-lucky-draw/en/" target="_blank" rel="noopener">Dafabet — Year-End Lucky Draw (EN/TH)</a></h3>
+                <p class="project-desc">Christmas/New Year lucky-draw campaign with free bet prizes and an iPhone 16 grand prize, plus How It Works, Terms and Winners popup modals.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">HTML5</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/sportsbook.jpg" alt="Sportsbook Homepage & Registration" draggable="false">
+                <a href="https://dusan.dafamedia.com/sb/mnofr/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://dusan.dafamedia.com/sb/mnofr/en/" target="_blank" rel="noopener">Dafabet — Sportsbook Homepage & Registration (7 markets)</a></h3>
+                <p class="project-desc">Celtic FC-themed sportsbook homepage with category navigation and a full registration form with field validation, localized across 7 markets.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">HTML5</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/baccarat.jpg" alt="Baccarat Live Casino Promo" draggable="false">
+                <a href="https://dusan.dafamedia.com/landing-page-1/en/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://dusan.dafamedia.com/landing-page-1/en/" target="_blank" rel="noopener">Dafabet — Baccarat Live Casino Promo</a></h3>
+                <p class="project-desc">Live Baccarat promo with a Play Now hero banner and a 4-item promo grid covering live games, rebate, deposit bonus and VIP perks.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">HTML5</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/kliker.jpg" alt="Kliker IT Centar website" draggable="false">
+                <a href="https://klikercenter.si/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://klikercenter.si/" target="_blank" rel="noopener">Kliker IT Centar — Multi-Market Web Development & Automation</a></h3>
+                <p class="project-desc">WordPress sites for a kids' robotics-education franchise across 4 regional markets, plus Make automations for course registrations and an admin diploma dashboard.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">WordPress</span>
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">Elementor</span>
+                  <span class="tech-tag">Make</span>
+                  <span class="tech-tag">Canva</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/appleland.jpg" alt="Appleland e-commerce concept" draggable="false">
+                <a href="https://pudar.me/appleland-projekat/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://pudar.me/appleland-projekat/" target="_blank" rel="noopener">Appleland — E-Commerce Storefront Concept</a></h3>
+                <p class="project-desc">Apple-inspired e-commerce concept with dedicated category pages, a responsive grid, and modular product cards with a Lightbox gallery.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">Lightbox.js</span>
+                  <span class="tech-tag">Bootstrap</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <div class="project-thumb">
+                <img src="assets/img/projects/bookstore-globus.jpg" alt="Bookstore Globus storefront" draggable="false">
+                <a href="https://pudar.me/knjizaraglobus-projekat/" target="_blank" rel="noopener" class="project-overlay">
+                  <span class="project-overlay-chip">View project</span>
+                </a>
+              </div>
+              <div class="project-body">
+                <h3 class="project-name"><a href="https://pudar.me/knjizaraglobus-projekat/" target="_blank" rel="noopener">Bookstore Globus — Bookstore & Stationery E-Commerce</a></h3>
+                <p class="project-desc">Mobile-first bookstore storefront with structured category filtering, featured product modules, and dedicated store-location pages.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">UI/UX</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="wrapper reveal">
+        <div class="contact-inner">
+          <div class="contact-content">
+            <p class="section-label">Contact</p>
+            <h2>Let's work together</h2>
+            <p class="section-text">
+              Open to new opportunities, freelance projects, or just a quick hello —
+              send a message and I'll reply as soon as possible.
+            </p>
+
+            <ul class="social-row social-row-contact" aria-label="Social links">
+              <li>
+                <a href="https://github.com/dusanpudar" target="_blank" rel="noopener" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/dusanpudar/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/dusanpudar" target="_blank" rel="noopener" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/pudardusan" target="_blank" rel="noopener" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:dusan@pudar.me" aria-label="Email">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <!-- Honeypot field, hidden from real users, catches simple bots -->
+            <div class="form-row form-row-honeypot" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">
+              <span class="form-submit-label">Send message</span>
+            </button>
+
+            <p class="form-recaptcha-note">
+              This site is protected by reCAPTCHA and the Google
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Dusan Pudar logo">
+      </div>
+
+      <ul class="social-row footer-social" aria-label="Social links">
+        <li>
+          <a href="https://github.com/dusanpudar" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/dusanpudar/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/dusanpudar" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/pudardusan" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:dusan@pudar.me" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p class="copyright">&copy; <span id="year"></span> Dusan Pudar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- CV preview modal -->
+  <div class="cv-modal" id="cvModal" hidden>
+    <div class="cv-modal-backdrop" data-cv-close></div>
+    <div class="cv-modal-panel" role="dialog" aria-modal="true" aria-label="CV preview">
+      <div class="cv-modal-head">
+        <span>Dusan Pudar — CV</span>
+        <div class="cv-modal-actions">
+          <a href="assets/pdf/DusanPudarCV.pdf?v=2" download class="btn btn-primary btn-sm">Download</a>
+          <button type="button" class="cv-modal-close" data-cv-close aria-label="Close preview">&times;</button>
+        </div>
+      </div>
+      <iframe id="cvFrame" src="" title="CV preview"></iframe>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <i class="toast-icon fa-solid"></i>
+    <span class="toast-text"></span>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

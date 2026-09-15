@@ -1,0 +1,162 @@
+/* Loaded after style.css */
+
+@media (max-width: 1100px) {
+  .project-item {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+
+  .contact-inner {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 12, 0.98);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav.is-open {
+    max-height: 400px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 24px 20px;
+  }
+
+  .nav a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-actions .btn-sm {
+    display: none;
+  }
+
+  .contact-inner {
+    flex-direction: column;
+  }
+
+  .contact-content, .contact-form {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0 64px;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 44px;
+  }
+
+  .hero-tagline {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-desc {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Matches the mobile photo's aspect ratio so it fills edge-to-edge */
+  .about-image {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 514 / 486;
+    margin: 0 auto;
+  }
+
+  /* Keeps decorative corners from causing horizontal overflow */
+  .about-shape-1 {
+    top: -8px;
+    left: -8px;
+  }
+
+  .about-shape-2 {
+    bottom: -8px;
+    right: -8px;
+  }
+
+  .about-image img {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-content {
+    max-width: none;
+  }
+
+  .section-text {
+    max-width: none;
+  }
+
+  .project-item {
+    flex: 0 0 85%;
+  }
+
+  .contact-inner {
+    padding: 24px 18px;
+  }
+
+  .contact-content .social-row {
+    justify-content: center;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .footer-brand, .footer-social, .copyright {
+    justify-self: center;
+  }
+
+  .cv-modal {
+    padding: 12px;
+  }
+}
