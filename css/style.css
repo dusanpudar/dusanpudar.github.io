@@ -322,6 +322,21 @@ button {
   margin: 0 0 12px;
 }
 
+.eyebrow-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  margin-left: 2px;
+  background: var(--accent-light);
+  vertical-align: -2px;
+  animation: eyebrow-blink 0.9s step-end infinite;
+}
+
+@keyframes eyebrow-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
 .hero-text h1 {
   font-size: clamp(36px, 4.6vw, 54px);
   line-height: 1.08;

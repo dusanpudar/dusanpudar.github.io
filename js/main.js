@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCvModal();
   initContactForm();
   initBackToTop();
+  initTypingEffect();
 });
 
 // Smooth scroll to in-page sections without adding #hash to the URL
@@ -66,6 +67,32 @@ function initBackToTop() {
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+function initTypingEffect() {
+  const el = document.getElementById("eyebrowText");
+  const text = el.textContent;
+  el.textContent = "";
+
+  function type(i) {
+    el.textContent = text.slice(0, i);
+    if (i < text.length) {
+      setTimeout(() => type(i + 1), 45);
+    } else {
+      setTimeout(() => erase(text.length), 2500);
+    }
+  }
+
+  function erase(i) {
+    el.textContent = text.slice(0, i);
+    if (i > 0) {
+      setTimeout(() => erase(i - 1), 30);
+    } else {
+      setTimeout(() => type(0), 500);
+    }
+  }
+
+  type(0);
 }
 
 // Reveals elements as they enter the viewport
