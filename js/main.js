@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectsCarousel();
   initCvModal();
   initContactForm();
+  initBackToTop();
 });
 
 // Smooth scroll to in-page sections without adding #hash to the URL
@@ -51,6 +52,19 @@ function initHeaderShadow() {
   const header = document.getElementById("site-header");
   window.addEventListener("scroll", () => {
     header.classList.toggle("is-scrolled", window.scrollY > 10);
+  });
+}
+
+function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  btn.hidden = false;
+
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("is-visible", window.scrollY > 500);
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
