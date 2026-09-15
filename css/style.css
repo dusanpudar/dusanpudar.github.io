@@ -392,7 +392,14 @@ button {
   gap: 6px;
 }
 
-.hero-social .social-row a {
+.social-row-contact,
+.footer-social {
+  gap: 6px;
+}
+
+.hero-social .social-row a,
+.social-row-contact a,
+.footer-social a {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -400,7 +407,9 @@ button {
   font-size: 18px;
 }
 
-.hero-social .social-row a:hover {
+.hero-social .social-row a:hover,
+.social-row-contact a:hover,
+.footer-social a:hover {
   background: var(--surface-soft);
 }
 
