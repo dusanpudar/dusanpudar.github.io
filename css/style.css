@@ -754,9 +754,11 @@ button {
 .project-tech {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 6px;
   margin-top: auto;
   padding-top: 14px;
+  min-height: 110px;
 }
 
 .tech-tag {

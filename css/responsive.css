@@ -5,6 +5,10 @@
     flex: 0 0 calc((100% - 20px) / 2);
   }
 
+  .project-tech {
+    min-height: 76px;
+  }
+
   .contact-inner {
     gap: 40px;
   }
@@ -135,6 +139,10 @@
 
   .project-item {
     flex: 0 0 85%;
+  }
+
+  .project-tech {
+    min-height: 144px;
   }
 
   .contact-inner {
