@@ -770,6 +770,11 @@ button {
   height: 170px;
 }
 
+.project-thumb picture {
+  display: block;
+  height: 100%;
+}
+
 .project-thumb-empty {
   background: linear-gradient(135deg, var(--surface-2), var(--surface));
 }

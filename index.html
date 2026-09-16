@@ -27,12 +27,17 @@
   <link rel="icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Non-blocking load: these fonts/icons aren't needed for first paint -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </noscript>
   <link rel="stylesheet" href="css/style.css?v=1789505687">
   <link rel="stylesheet" href="css/responsive.css?v=1789505687">
   <!-- Replace with your own reCAPTCHA v3 site key -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LcBBL0tAAAAAIUOhda9Aaz7-fOTONDZQJ_iL9gu"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcBBL0tAAAAAIUOhda9Aaz7-fOTONDZQJ_iL9gu" defer></script>
 
   <script type="application/ld+json">
   {
@@ -56,7 +61,10 @@
   <header class="site-header" id="site-header">
     <div class="wrapper header-bar">
       <a href="#home" class="logo" data-scroll>
-        <img src="assets/img/logo.png" alt="Dusan Pudar logo">
+        <picture>
+          <source type="image/webp" srcset="assets/img/logo.webp">
+          <img src="assets/img/logo.png" alt="Dusan Pudar logo">
+        </picture>
       </a>
 
       <nav class="nav" id="nav">
@@ -102,7 +110,10 @@
 
         <div class="hero-visual reveal">
           <div class="hero-image">
-            <img src="assets/img/caricature.png" width="514" height="486" alt="Dusan Pudar" draggable="false">
+            <picture>
+              <source type="image/webp" srcset="assets/img/caricature.webp">
+              <img src="assets/img/caricature.png" width="514" height="486" alt="Dusan Pudar" draggable="false">
+            </picture>
           </div>
 
           <p class="hero-availability">available — <span class="hero-availability-accent">new opportunities welcome</span></p>
@@ -149,7 +160,9 @@
           <div class="about-shape about-shape-2"></div>
           <div class="about-image-card"></div>
           <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/img/caricature-mobile.webp">
             <source media="(max-width: 768px)" srcset="assets/img/caricature-mobile.png">
+            <source type="image/webp" srcset="assets/img/caricature-desktop.webp">
             <img src="assets/img/caricature-desktop.png" width="514" height="486" alt="Dusan Pudar illustration" draggable="false" loading="lazy">
           </picture>
         </div>
@@ -324,7 +337,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/celtic.jpg" width="900" height="435" alt="Celtic FC Prediction Challenge" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/celtic.webp">
+                  <img src="assets/img/projects/celtic.jpg" width="900" height="435" alt="Celtic FC Prediction Challenge" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.dafaleague.com/2026/celtic-predict-and-win/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -347,7 +363,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/wc.jpg" width="900" height="434" alt="DafaMillion Cup 2026 Prediction Game" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/wc.webp">
+                  <img src="assets/img/projects/wc.jpg" width="900" height="434" alt="DafaMillion Cup 2026 Prediction Game" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.dafaleague.com/dafamillion-cup-2026/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -370,7 +389,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/seo.jpg" width="900" height="900" alt="SEO & WordPress Content Operations" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/seo.webp">
+                  <img src="assets/img/projects/seo.jpg" width="900" height="900" alt="SEO & WordPress Content Operations" draggable="false" loading="lazy">
+                </picture>
               </div>
               <div class="project-body">
                 <h3 class="project-name">Dafabet — SEO & WordPress Content Operations</h3>
@@ -389,7 +411,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/footer.jpg" width="900" height="200" alt="Shared Header/Footer Template System" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/footer.webp">
+                  <img src="assets/img/projects/footer.jpg" width="900" height="200" alt="Shared Header/Footer Template System" draggable="false" loading="lazy">
+                </picture>
               </div>
               <div class="project-body">
                 <h3 class="project-name">Dafabet — Shared Header/Footer Template System</h3>
@@ -409,7 +434,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/doubledice.png" width="1920" height="929" alt="Dafabet – Double Dice Affiliates" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/doubledice.webp">
+                  <img src="assets/img/projects/doubledice.png" width="1920" height="929" alt="Dafabet – Double Dice Affiliates" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.doublediceaffiliates.com/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -435,7 +463,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/sport.jpg" width="900" height="435" alt="EPL Sports Promo Landing Pages" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/sport.webp">
+                  <img src="assets/img/projects/sport.jpg" width="900" height="435" alt="EPL Sports Promo Landing Pages" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://cmkt.dafapromo.com/sport/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -457,7 +488,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/epl.jpg" width="900" height="726" alt="EPL Freebet Registration Landing Page" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/epl.webp">
+                  <img src="assets/img/projects/epl.jpg" width="900" height="726" alt="EPL Freebet Registration Landing Page" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://cmkt.dafapromo.com/epl/reg/freebet/in/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -479,7 +513,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/fire-horse.jpg" width="900" height="492" alt="Year of the Fire Horse campaign" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/fire-horse.webp">
+                  <img src="assets/img/projects/fire-horse.jpg" width="900" height="492" alt="Year of the Fire Horse campaign" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.dafaleague.com/2026/year-of-the-fire-horse/th/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -502,7 +539,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/kbo.jpg" width="900" height="473" alt="KBO Promo Landing Page" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/kbo.webp">
+                  <img src="assets/img/projects/kbo.jpg" width="900" height="473" alt="KBO Promo Landing Page" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://cmkt.dafapromo.com/kbo/kr/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -523,7 +563,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/maha.jpg" width="900" height="442" alt="Maha Songkran Fest campaign" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/maha.webp">
+                  <img src="assets/img/projects/maha.jpg" width="900" height="442" alt="Maha Songkran Fest campaign" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.dafaleague.com/2026/maha-songkran-fest/th/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -546,7 +589,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/nba.jpg" width="900" height="534" alt="NBA Playoffs Bracket Championship" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/nba.webp">
+                  <img src="assets/img/projects/nba.jpg" width="900" height="534" alt="NBA Playoffs Bracket Championship" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://www.dafaleague.com/2026/playoffs-bracket-championship/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -569,7 +615,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/dafaonlinegames.jpg" width="900" height="449" alt="DafaOnlineGames platform" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/dafaonlinegames.webp">
+                  <img src="assets/img/projects/dafaonlinegames.jpg" width="900" height="449" alt="DafaOnlineGames platform" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://dafaonlinegames.com/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -591,7 +640,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/ipl.jpg" width="900" height="435" alt="IPL Jackpot Campaign" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/ipl.webp">
+                  <img src="assets/img/projects/ipl.jpg" width="900" height="435" alt="IPL Jackpot Campaign" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://cmkt.dafapromo.com/IPL/pk/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -613,7 +665,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/year-lucky.jpg" width="900" height="470" alt="Year-End Lucky Draw campaign" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/year-lucky.webp">
+                  <img src="assets/img/projects/year-lucky.jpg" width="900" height="470" alt="Year-End Lucky Draw campaign" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://dev.dafaleague.com/dusan/year-end-lucky-draw/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -634,7 +689,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/sportsbook.jpg" width="900" height="460" alt="Sportsbook Homepage & Registration" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/sportsbook.webp">
+                  <img src="assets/img/projects/sportsbook.jpg" width="900" height="460" alt="Sportsbook Homepage & Registration" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://dusan.dafamedia.com/sb/mnofr/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -655,7 +713,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/baccarat.jpg" width="900" height="435" alt="Baccarat Live Casino Promo" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/baccarat.webp">
+                  <img src="assets/img/projects/baccarat.jpg" width="900" height="435" alt="Baccarat Live Casino Promo" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://dusan.dafamedia.com/landing-page-1/en/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -676,7 +737,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/kliker.jpg" width="900" height="675" alt="Kliker IT Centar website" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/kliker.webp">
+                  <img src="assets/img/projects/kliker.jpg" width="900" height="675" alt="Kliker IT Centar website" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://klikercenter.si/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -697,7 +761,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/appleland.jpg" width="900" height="431" alt="Appleland e-commerce concept" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/appleland.webp">
+                  <img src="assets/img/projects/appleland.jpg" width="900" height="431" alt="Appleland e-commerce concept" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://pudar.me/appleland-projekat/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -717,7 +784,10 @@
 
             <article class="project-item">
               <div class="project-thumb">
-                <img src="assets/img/projects/bookstore-globus.jpg" width="900" height="432" alt="Bookstore Globus storefront" draggable="false" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/projects/bookstore-globus.webp">
+                  <img src="assets/img/projects/bookstore-globus.jpg" width="900" height="432" alt="Bookstore Globus storefront" draggable="false" loading="lazy">
+                </picture>
                 <a href="https://pudar.me/knjizaraglobus-projekat/" target="_blank" rel="noopener" class="project-overlay">
                   <span class="project-overlay-chip">View project</span>
                 </a>
@@ -831,7 +901,10 @@
   <footer class="site-footer">
     <div class="wrapper footer-inner">
       <div class="footer-brand">
-        <img src="assets/img/logo.png" alt="Dusan Pudar logo" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="assets/img/logo.webp">
+          <img src="assets/img/logo.png" alt="Dusan Pudar logo" loading="lazy">
+        </picture>
       </div>
 
       <ul class="social-row footer-social" aria-label="Social links">
