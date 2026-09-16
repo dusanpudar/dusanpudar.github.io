@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initBackToTop();
   initTypingEffect();
+  initHeroGlow();
 });
 
 // Smooth scroll to in-page sections without adding #hash to the URL
@@ -67,6 +68,23 @@ function initBackToTop() {
 
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+function initHeroGlow() {
+  const hero = document.getElementById("home");
+  const glow = document.getElementById("heroGlow");
+  if (!hero || !glow) return;
+
+  hero.addEventListener("mousemove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    glow.style.left = `${event.clientX - rect.left}px`;
+    glow.style.top = `${event.clientY - rect.top}px`;
+    glow.classList.add("is-visible");
+  });
+
+  hero.addEventListener("mouseleave", () => {
+    glow.classList.remove("is-visible");
   });
 }
 

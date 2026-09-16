@@ -18,7 +18,7 @@
 
   --text-primary: #f3f6f4;
   --text-secondary: #a6b3ad;
-  --text-muted: #6d7b74;
+  --text-muted: #78867f;
 
   --radius: 14px;
   --radius-sm: 8px;
@@ -299,6 +299,24 @@ button {
   padding: 72px 0 64px;
 }
 
+.hero-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.05) 40%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-glow.is-visible {
+  opacity: 1;
+}
+
 .hero-inner {
   display: flex;
   align-items: center;
@@ -376,6 +394,18 @@ button {
   object-fit: contain;
   mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
   -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+}
+
+.hero-availability {
+  margin: 18px 0 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hero-availability-accent {
+  color: var(--accent-light);
 }
 
 .hero-social {
